@@ -1,6 +1,7 @@
 package algorithms;
 
 import java.util.Collections;
+import java.util.PriorityQueue;
 import java.util.Vector;
 
 public class Sort {
@@ -45,16 +46,24 @@ public class Sort {
    * @return A vector of the largest n elements in v
    */
   public static Vector<Integer> MaxN(Vector<Integer> v, int n) {
-    Vector<Integer> ret = new Vector<Integer>();
-    // Copy the vector so we don't modify the original
-    Vector<Integer> temp = new Vector<Integer>(v);
-
-    Collections.sort(temp);
-
-    for (int i = temp.size() - 1; i > temp.size() - n - 1; i--) {
-      ret.add(temp.get(i));
+    if (n <= 0 || n > v.size()) {
+      return new Vector<Integer>();
     }
 
+    PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+    for (int i = 0; i < n; ++i) {
+      minHeap.offer(v.get(i));
+    }
+
+    for (int i = n; i < v.size(); ++i) {
+      if (v.get(i) > minHeap.peek()) {
+        minHeap.poll();
+        minHeap.offer(v.get(i));
+      }
+    }
+
+    Vector<Integer> ret = new Vector<>(minHeap);
+    Collections.sort(ret, Collections.reverseOrder()); // Sort in descending order
     return ret;
   }
 }
