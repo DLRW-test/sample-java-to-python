@@ -29,7 +29,7 @@ public class Single {
    * @return The maximum value in the array.
    */
   public static int maxArray(int[] arr) {
-    int max = 0;
+    int max = arr[0];
     for (int i : arr) {
       if (i > max) {
         max = i;
