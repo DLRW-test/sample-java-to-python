@@ -21,6 +21,14 @@ public class SingleTest {
     assertEquals(5, Single.maxArray(new int[] { 1, 2, 3, 4, 5 }));
     assertEquals(1, Single.maxArray(new int[] { 1, 1, 1, 1, 0 }));
     assertEquals(0, Single.maxArray(new int[] { -1, -1, -1, -1, 0 }));
+    // Edge case: All-negative array
+    assertEquals(-3, Single.maxArray(new int[] { -5, -3, -10 }));
+    // Edge case: Mixed positive/negative array
+    assertEquals(7, Single.maxArray(new int[] { -5, 3, -10, 7, -2 }));
+    // Edge case: Single negative element
+    assertEquals(-42, Single.maxArray(new int[] { -42 }));
+    // Edge case: All zeros
+    assertEquals(0, Single.maxArray(new int[] { 0, 0, 0 }));
   }
 
   @Test
