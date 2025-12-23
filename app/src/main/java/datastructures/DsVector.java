@@ -1,16 +1,16 @@
 package datastructures;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Vector;
 
 public class DsVector {
   /**
-   * Adds 1 to each element of the vector
+   * Adds 1 to each element of the ArrayList
    *
-   * @param arr the vector to be incremented
-   * @return the incremented vector
+   * @param v the ArrayList to be incremented
+   * @return the incremented ArrayList
    */
-  public static Vector<Integer> modifyVector(Vector<Integer> v) {
+  public static ArrayList<Integer> modifyVector(ArrayList<Integer> v) {
     for (int i = 0; i < v.size(); i++) {
       v.set(i, v.get(i) + 1);
     }
@@ -18,13 +18,13 @@ public class DsVector {
   }
 
   /**
-   * Searches the vector for all instances of n
+   * Searches the ArrayList for all instances of n
    *
-   * @param v the vector to be searched
-   * @ A vector of all indices where n was found
+   * @param v the ArrayList to be searched
+   * @return An ArrayList of all indices where n was found
    */
-  public static Vector<Integer> searchVector(Vector<Integer> v, int n) {
-    Vector<Integer> indices = new Vector<Integer>();
+  public static ArrayList<Integer> searchVector(ArrayList<Integer> v, int n) {
+    ArrayList<Integer> indices = new ArrayList<Integer>();
     for (int i = 0; i < v.size(); i++) {
       if (v.get(i) == n) {
         indices.add(i);
@@ -34,25 +34,25 @@ public class DsVector {
   }
 
   /**
-   * Sorts the vector in ascending order
+   * Sorts the ArrayList in ascending order
    *
-   * @param v the vector to be sorted
-   * @return the sorted vector
+   * @param v the ArrayList to be sorted
+   * @return the sorted ArrayList
    */
-  public static Vector<Integer> sortVector(Vector<Integer> v) {
-    Vector<Integer> ret = new Vector<Integer>(v);
+  public static ArrayList<Integer> sortVector(ArrayList<Integer> v) {
+    ArrayList<Integer> ret = new ArrayList<Integer>(v);
     Collections.sort(ret);
     return ret;
   }
 
   /**
-   * Reverses the vector
+   * Reverses the ArrayList
    *
-   * @param v the vector to be reversed
-   * @return the reversed vector
+   * @param v the ArrayList to be reversed
+   * @return the reversed ArrayList
    */
-  public static Vector<Integer> reverseVector(Vector<Integer> v) {
-    Vector<Integer> ret = new Vector<Integer>();
+  public static ArrayList<Integer> reverseVector(ArrayList<Integer> v) {
+    ArrayList<Integer> ret = new ArrayList<Integer>();
 
     for (int i = v.size() - 1; i >= 0; i--) {
       ret.add(v.get(i));
@@ -61,14 +61,14 @@ public class DsVector {
   }
 
   /**
-   * Rotates the vector by n
+   * Rotates the ArrayList by n
    *
-   * @param v the vector to be rotated
-   * @param n the number of times to rotate the vector
-   * @return the rotated vector
+   * @param v the ArrayList to be rotated
+   * @param n the number of times to rotate the ArrayList
+   * @return the rotated ArrayList
    */
-  public static Vector<Integer> rotateVector(Vector<Integer> v, int n) {
-    Vector<Integer> ret = new Vector<Integer>();
+  public static ArrayList<Integer> rotateVector(ArrayList<Integer> v, int n) {
+    ArrayList<Integer> ret = new ArrayList<Integer>();
 
     for (int i = n; i < v.size(); i++) {
       ret.add(v.get(i));
@@ -80,15 +80,15 @@ public class DsVector {
   }
 
   /**
-   * Merges two vectors
+   * Merges two ArrayLists
    *
-   * @param v1 the first vector to be merged
-   * @param v2 the second vector to be merged
-   * @return the merged vector
+   * @param v1 the first ArrayList to be merged
+   * @param v2 the second ArrayList to be merged
+   * @return the merged ArrayList
    */
-  public static Vector<Integer> mergeVectors(Vector<Integer> v1,
-      Vector<Integer> v2) {
-    Vector<Integer> ret = new Vector<Integer>();
+  public static ArrayList<Integer> mergeVectors(ArrayList<Integer> v1,
+      ArrayList<Integer> v2) {
+    ArrayList<Integer> ret = new ArrayList<Integer>();
 
     for (int i = 0; i < v1.size(); i++) {
       ret.add(v1.get(i));
