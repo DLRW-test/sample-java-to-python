@@ -1,8 +1,8 @@
 package algorithms;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.PriorityQueue;
-import java.util.Vector;
 
 public class Sort {
   /**
@@ -10,7 +10,7 @@ public class Sort {
    *
    * @param v The vector to be sorted
    */
-  public static void SortVector(Vector<Integer> v) {
+  public static void SortVector(ArrayList<Integer> v) {
     Collections.sort(v);
   }
 
@@ -20,7 +20,7 @@ public class Sort {
    * @param v           The vector to be partitioned
    * @param pivot_value
    */
-  public static void DutchFlagPartition(Vector<Integer> v, int pivot_value) {
+  public static void DutchFlagPartition(ArrayList<Integer> v, int pivot_value) {
     int next_value = 0;
 
     for (int i = 0; i < v.size(); i++) {
@@ -45,9 +45,9 @@ public class Sort {
    * @param n The number of elements to return
    * @return A vector of the largest n elements in v
    */
-  public static Vector<Integer> MaxN(Vector<Integer> v, int n) {
+  public static ArrayList<Integer> MaxN(ArrayList<Integer> v, int n) {
     if (n <= 0 || n > v.size()) {
-      return new Vector<Integer>();
+      return new ArrayList<>();
     }
 
     PriorityQueue<Integer> minHeap = new PriorityQueue<>();
@@ -62,7 +62,7 @@ public class Sort {
       }
     }
 
-    Vector<Integer> ret = new Vector<>(minHeap);
+    ArrayList<Integer> ret = new ArrayList<>(minHeap);
     Collections.sort(ret, Collections.reverseOrder()); // Sort in descending order
     return ret;
   }
