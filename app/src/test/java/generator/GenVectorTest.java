@@ -1,6 +1,7 @@
 package generator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -212,6 +213,40 @@ public class GenVectorTest {
     assertTrue(uniqueValues.size() >= 5, 
         "With " + n + " elements over range [0, " + m + "), should see reasonable " +
         "variety of values (got " + uniqueValues.size() + " distinct values)");
+  }
+
+  // ==================== Exception Tests ====================
+
+  @Test
+  public void testGenerateVector_NegativeN() {
+    // Test that negative n throws IllegalArgumentException
+    assertThrows(IllegalArgumentException.class, () -> {
+      GenVector.generateVector(-1, 10);
+    }, "generateVector() should throw IllegalArgumentException for negative n");
+  }
+
+  @Test
+  public void testGenerateVector_NegativeM() {
+    // Test that negative m throws IllegalArgumentException
+    assertThrows(IllegalArgumentException.class, () -> {
+      GenVector.generateVector(10, -1);
+    }, "generateVector() should throw IllegalArgumentException for negative m");
+  }
+
+  @Test
+  public void testGenerateVector_ZeroM() {
+    // Test that m=0 throws IllegalArgumentException
+    assertThrows(IllegalArgumentException.class, () -> {
+      GenVector.generateVector(10, 0);
+    }, "generateVector() should throw IllegalArgumentException for m=0");
+  }
+
+  @Test
+  public void testGenerateVector_BothNegative() {
+    // Test that both negative parameters throws IllegalArgumentException
+    assertThrows(IllegalArgumentException.class, () -> {
+      GenVector.generateVector(-5, -10);
+    }, "generateVector() should throw IllegalArgumentException when both n and m are negative");
   }
 
   // ==================== Helper Methods ====================

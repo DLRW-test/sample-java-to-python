@@ -2,6 +2,7 @@ package datastructures;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashSet;
@@ -395,6 +396,79 @@ public class DsLinkedListTest {
       
       // They should be different objects
       assertNotSame(slice1, slice2);
+    }
+  }
+
+  // ==================== Error Handling Tests ====================
+
+  @Nested
+  @DisplayName("Error Handling Tests")
+  class ErrorHandlingTests {
+
+    @Test
+    public void testShuffle_whenNull_throwsNullPointerException() {
+      assertThrows(NullPointerException.class, () -> {
+        DsLinkedList.shuffle(null);
+      });
+    }
+
+    @Test
+    public void testSlice_whenNull_throwsNullPointerException() {
+      assertThrows(NullPointerException.class, () -> {
+        DsLinkedList.slice(null, 0, 1);
+      });
+    }
+
+    @Test
+    public void testSlice_whenStartNegative_throwsIndexOutOfBoundsException() {
+      LinkedList<Integer> list = new LinkedList<>();
+      list.add(1);
+      list.add(2);
+      list.add(3);
+      assertThrows(IndexOutOfBoundsException.class, () -> {
+        DsLinkedList.slice(list, -1, 2);
+      });
+    }
+
+    @Test
+    public void testSlice_whenStartExceedsSize_throwsIndexOutOfBoundsException() {
+      LinkedList<Integer> list = new LinkedList<>();
+      list.add(1);
+      list.add(2);
+      assertThrows(IndexOutOfBoundsException.class, () -> {
+        DsLinkedList.slice(list, 5, 6);
+      });
+    }
+
+    @Test
+    public void testSlice_whenEndNegative_throwsIndexOutOfBoundsException() {
+      LinkedList<Integer> list = new LinkedList<>();
+      list.add(1);
+      list.add(2);
+      assertThrows(IndexOutOfBoundsException.class, () -> {
+        DsLinkedList.slice(list, 0, -1);
+      });
+    }
+
+    @Test
+    public void testSlice_whenEndExceedsSize_throwsIndexOutOfBoundsException() {
+      LinkedList<Integer> list = new LinkedList<>();
+      list.add(1);
+      list.add(2);
+      assertThrows(IndexOutOfBoundsException.class, () -> {
+        DsLinkedList.slice(list, 0, 5);
+      });
+    }
+
+    @Test
+    public void testSlice_whenStartGreaterThanEnd_throwsIndexOutOfBoundsException() {
+      LinkedList<Integer> list = new LinkedList<>();
+      list.add(1);
+      list.add(2);
+      list.add(3);
+      assertThrows(IndexOutOfBoundsException.class, () -> {
+        DsLinkedList.slice(list, 2, 1);
+      });
     }
   }
 }

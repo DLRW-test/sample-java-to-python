@@ -2,6 +2,7 @@ package datastructures;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -514,5 +515,88 @@ public class DsVectorTest {
     assertEquals(2, result.size());
     assertEquals(42, result.get(0));
     assertEquals(99, result.get(1));
+  }
+
+  // ==================== Error Handling Tests ====================
+
+  @Test
+  public void testModifyVector_whenNull_throwsNullPointerException() {
+    assertThrows(NullPointerException.class, () -> {
+      DsVector.modifyVector(null);
+    });
+  }
+
+  @Test
+  public void testSearchVector_whenNull_throwsNullPointerException() {
+    assertThrows(NullPointerException.class, () -> {
+      DsVector.searchVector(null, 5);
+    });
+  }
+
+  @Test
+  public void testSortVector_whenNull_throwsNullPointerException() {
+    assertThrows(NullPointerException.class, () -> {
+      DsVector.sortVector(null);
+    });
+  }
+
+  @Test
+  public void testReverseVector_whenNull_throwsNullPointerException() {
+    assertThrows(NullPointerException.class, () -> {
+      DsVector.reverseVector(null);
+    });
+  }
+
+  @Test
+  public void testRotateVector_whenNull_throwsNullPointerException() {
+    assertThrows(NullPointerException.class, () -> {
+      DsVector.rotateVector(null, 2);
+    });
+  }
+
+  @Test
+  public void testRotateVector_whenNegativeRotation_throwsIllegalArgumentException() {
+    ArrayList<Integer> v = new ArrayList<>();
+    v.add(1);
+    v.add(2);
+    v.add(3);
+    assertThrows(IllegalArgumentException.class, () -> {
+      DsVector.rotateVector(v, -1);
+    });
+  }
+
+  @Test
+  public void testRotateVector_whenRotationEqualsSize_throwsIllegalArgumentException() {
+    ArrayList<Integer> v = new ArrayList<>();
+    v.add(1);
+    v.add(2);
+    v.add(3);
+    assertThrows(IllegalArgumentException.class, () -> {
+      DsVector.rotateVector(v, 3);
+    });
+  }
+
+  @Test
+  public void testRotateVector_whenRotationExceedsSize_throwsIllegalArgumentException() {
+    ArrayList<Integer> v = new ArrayList<>();
+    v.add(1);
+    v.add(2);
+    assertThrows(IllegalArgumentException.class, () -> {
+      DsVector.rotateVector(v, 5);
+    });
+  }
+
+  @Test
+  public void testMergeVectors_whenFirstNull_throwsNullPointerException() {
+    assertThrows(NullPointerException.class, () -> {
+      DsVector.mergeVectors(null, new ArrayList<>());
+    });
+  }
+
+  @Test
+  public void testMergeVectors_whenSecondNull_throwsNullPointerException() {
+    assertThrows(NullPointerException.class, () -> {
+      DsVector.mergeVectors(new ArrayList<>(), null);
+    });
   }
 }

@@ -13,8 +13,12 @@ public final class Sort {
    * Sorts a vector of integers in ascending order
    *
    * @param v The vector to be sorted
+   * @throws NullPointerException if v is null
    */
   public static void sortVector(ArrayList<Integer> v) {
+    if (v == null) {
+      throw new NullPointerException("ArrayList cannot be null");
+    }
     Collections.sort(v);
   }
 
@@ -22,9 +26,13 @@ public final class Sort {
    * Partitions a vector of integers around a pivot
    *
    * @param v           The vector to be partitioned
-   * @param pivot_value
+   * @param pivot_value The pivot value for partitioning
+   * @throws NullPointerException if v is null
    */
   public static void dutchFlagPartition(ArrayList<Integer> v, int pivot_value) {
+    if (v == null) {
+      throw new NullPointerException("ArrayList cannot be null");
+    }
     int next_value = 0;
 
     for (int i = 0; i < v.size(); i++) {
@@ -48,10 +56,18 @@ public final class Sort {
    * @param v The vector to be sorted
    * @param n The number of elements to return
    * @return A vector of the largest n elements in v
+   * @throws NullPointerException if v is null
+   * @throws IllegalArgumentException if n is negative or greater than the size of v
    */
   public static ArrayList<Integer> maxN(ArrayList<Integer> v, int n) {
-    if (n <= 0 || n > v.size()) {
-      return new ArrayList<>();
+    if (v == null) {
+      throw new NullPointerException("ArrayList cannot be null");
+    }
+    if (n < 0) {
+      throw new IllegalArgumentException("n cannot be negative: " + n);
+    }
+    if (n == 0 || n > v.size()) {
+      throw new IllegalArgumentException("n must be between 1 and vector size (" + v.size() + "), got: " + n);
     }
 
     PriorityQueue<Integer> minHeap = new PriorityQueue<>();

@@ -1,6 +1,7 @@
 package control;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -41,5 +42,42 @@ public class SingleTest {
     assertEquals(20, Single.sumModulus(10, 2));
     assertEquals(18, Single.sumModulus(10, 3));
     assertEquals(12, Single.sumModulus(10, 4));
+  }
+
+  // ==================== Error Handling Tests ====================
+
+  @Test
+  public void testMaxArray_whenNull_throwsNullPointerException() {
+    assertThrows(NullPointerException.class, () -> {
+      Single.maxArray(null);
+    });
+  }
+
+  @Test
+  public void testMaxArray_whenEmpty_throwsIllegalArgumentException() {
+    assertThrows(IllegalArgumentException.class, () -> {
+      Single.maxArray(new int[] {});
+    });
+  }
+
+  @Test
+  public void testSumModulus_whenZeroDivisor_throwsIllegalArgumentException() {
+    assertThrows(IllegalArgumentException.class, () -> {
+      Single.sumModulus(10, 0);
+    });
+  }
+
+  @Test
+  public void testSumModulus_whenNegativeDivisor_throwsIllegalArgumentException() {
+    assertThrows(IllegalArgumentException.class, () -> {
+      Single.sumModulus(10, -1);
+    });
+  }
+
+  @Test
+  public void testSumRange_whenNegative_throwsIllegalArgumentException() {
+    assertThrows(IllegalArgumentException.class, () -> {
+      Single.sumRange(-1);
+    });
   }
 }

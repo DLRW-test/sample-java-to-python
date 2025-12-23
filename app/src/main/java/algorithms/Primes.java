@@ -30,11 +30,11 @@ public final class Primes {
    * 
    * @param limit The upper bound (inclusive) for the sieve.
    * @return A boolean array where isPrime[i] is true if i is prime, false otherwise.
-   *         Returns empty array (size 0) for negative inputs.
+   * @throws IllegalArgumentException if limit is negative
    */
   public static boolean[] generateSieve(int limit) {
     if (limit < 0) {
-      return new boolean[0];
+      throw new IllegalArgumentException("Limit cannot be negative: " + limit);
     }
     if (limit < 2) {
       return new boolean[limit + 1];
@@ -105,8 +105,12 @@ public final class Primes {
    * 
    * @param n The upper bound (exclusive) - sums all primes less than n.
    * @return The sum of all prime numbers less than n.
+   * @throws IllegalArgumentException if n is negative
    */
   public static int sumPrimes(int n) {
+    if (n < 0) {
+      throw new IllegalArgumentException("Upper bound cannot be negative: " + n);
+    }
     if (n <= 2) {
       return 0;
     }
@@ -149,8 +153,13 @@ public final class Primes {
    * 
    * @param n The upper bound (inclusive) for prime generation.
    * @return An ArrayList containing all prime numbers from 2 to n (inclusive).
+   * @throws IllegalArgumentException if n is negative
    */
   public static ArrayList<Integer> getAllPrimesUpTo(int n) {
+    if (n < 0) {
+      throw new IllegalArgumentException("Upper bound cannot be negative: " + n);
+    }
+    
     ArrayList<Integer> primes = new ArrayList<>();
     
     if (n < 2) {
@@ -186,8 +195,13 @@ public final class Primes {
    * 
    * @param n The number to find the prime factors of.
    * @return An ArrayList of all prime factors of n (with repetition for prime powers).
+   * @throws IllegalArgumentException if n is less than or equal to 0
    */
   public static ArrayList<Integer> primeFactors(int n) {
+    if (n <= 0) {
+      throw new IllegalArgumentException("Number must be positive: " + n);
+    }
+    
     ArrayList<Integer> ret = new ArrayList<>();
 
     for (int i = 2; i * i <= n; i++) { // Optimized loop condition
@@ -226,8 +240,12 @@ public final class Primes {
    * 
    * @param n The upper limit (exclusive) for prime summation.
    * @return The sum of all prime numbers less than n as a long.
+   * @throws IllegalArgumentException if n is negative
    */
   public static long sumPrimesUsingSieve(int n) {
+    if (n < 0) {
+      throw new IllegalArgumentException("Upper limit cannot be negative: " + n);
+    }
     if (n < 2) {
       return 0; // No primes less than 2
     }

@@ -2,6 +2,7 @@ package strings;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -93,6 +94,14 @@ public class StropsTest {
     // Test that whitespace is properly handled
     assertEquals("  olleh", strops.reverse("hello  "));
     assertEquals("dlrow olleh", strops.reverse("hello world"));
+  }
+
+  @Test
+  public void testReverseNullString() {
+    // Test that null input throws NullPointerException
+    assertThrows(NullPointerException.class, () -> {
+      strops.reverse(null);
+    }, "reverse() should throw NullPointerException for null input");
   }
 
   // ===== Tests for isPalindrome() method =====
@@ -205,5 +214,13 @@ public class StropsTest {
     // Edge case: all same character is always a palindrome
     assertTrue(strops.isPalindrome("aaaa"));
     assertTrue(strops.isPalindrome("111"));
+  }
+
+  @Test
+  public void testIsPalindromeNullString() {
+    // Test that null input throws NullPointerException
+    assertThrows(NullPointerException.class, () -> {
+      strops.isPalindrome(null);
+    }, "isPalindrome() should throw NullPointerException for null input");
   }
 }

@@ -38,8 +38,12 @@ public final class Double {
    *
    * @param arr The array of integers.
    * @return The number of pairs in the array.
+   * @throws NullPointerException if arr is null
    */
   public static int countPairs(int[] arr) {
+    if (arr == null) {
+      throw new NullPointerException("Array cannot be null");
+    }
     // Optimized O(n) solution using HashMap to track frequencies
     HashMap<Integer, Integer> frequencyMap = new HashMap<>();
     
@@ -66,8 +70,20 @@ public final class Double {
    * @param arr1 The second array of integers.
    * @return The number of instances where the values at the same index are
    *         equal.
+   * @throws NullPointerException if arr0 or arr1 is null
+   * @throws IllegalArgumentException if arrays have different lengths
    */
   public static int countDuplicates(int[] arr0, int[] arr1) {
+    if (arr0 == null) {
+      throw new NullPointerException("First array cannot be null");
+    }
+    if (arr1 == null) {
+      throw new NullPointerException("Second array cannot be null");
+    }
+    if (arr0.length != arr1.length) {
+      throw new IllegalArgumentException(
+          "Arrays must have equal length, got: " + arr0.length + " and " + arr1.length);
+    }
     // Optimized O(n) single-pass algorithm
     int count = 0;
     for (int i = 0; i < arr0.length; i++) {
@@ -85,11 +101,23 @@ public final class Double {
    *
    * @param arr The 2D array of integers.
    * @return The sum of all values in the 2D array.
+   * @throws NullPointerException if arr is null or any row is null
+   * @throws IllegalArgumentException if arr is not square
    */
   public static int sumMatrix(int[][] arr) {
+    if (arr == null) {
+      throw new NullPointerException("Matrix cannot be null");
+    }
     int sum = 0;
     int n = arr.length;
     for (int i = 0; i < n; i++) {
+      if (arr[i] == null) {
+        throw new NullPointerException("Matrix row cannot be null");
+      }
+      if (arr[i].length != n) {
+        throw new IllegalArgumentException(
+            "Matrix must be square, expected " + n + " columns but row " + i + " has " + arr[i].length);
+      }
       for (int j = 0; j < n; j++) {
         sum += arr[i][j];
       }
