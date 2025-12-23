@@ -108,7 +108,7 @@ public class PrimesTest {
     }
 
     @Test
-    @DisplayName("n=6 should return 5 (primes < 6: 2, 3, 5)")
+    @DisplayName("n=6 should return 10 (primes < 6: 2, 3, 5)")
     public void testSumPrimesSix() {
       // Primes less than 6 are: 2, 3, 5
       // Sum = 2 + 3 + 5 = 10
@@ -241,6 +241,16 @@ public class PrimesTest {
   class GenerateSieveTests {
 
     @Test
+    @DisplayName("Edge case: negative input should return empty array")
+    public void testGenerateSieveNegative() {
+      boolean[] sieve = Primes.generateSieve(-1);
+      assertEquals(0, sieve.length, "generateSieve(-1) should return empty array");
+      
+      sieve = Primes.generateSieve(-10);
+      assertEquals(0, sieve.length, "generateSieve(-10) should return empty array");
+    }
+
+    @Test
     @DisplayName("Edge case: n=0 should return array with no primes")
     public void testGenerateSieveZero() {
       boolean[] sieve = Primes.generateSieve(0);
@@ -320,6 +330,16 @@ public class PrimesTest {
   class GetAllPrimesUpToTests {
 
     @Test
+    @DisplayName("Edge case: negative input should return empty vector")
+    public void testGetAllPrimesUpToNegative() {
+      Vector<Integer> primes = Primes.getAllPrimesUpTo(-5);
+      assertEquals(0, primes.size(), "getAllPrimesUpTo(-5) should return empty vector");
+      
+      primes = Primes.getAllPrimesUpTo(-100);
+      assertEquals(0, primes.size(), "getAllPrimesUpTo(-100) should return empty vector");
+    }
+
+    @Test
     @DisplayName("Edge case: n=0 should return empty vector")
     public void testGetAllPrimesUpToZero() {
       Vector<Integer> primes = Primes.getAllPrimesUpTo(0);
@@ -392,6 +412,14 @@ public class PrimesTest {
   @Nested
   @DisplayName("sumPrimesUsingSieve(int n) tests")
   class SumPrimesUsingSieveTests {
+
+    @Test
+    @DisplayName("Edge case: negative input should return 0")
+    public void testSumPrimesUsingSieveNegative() {
+      assertEquals(0, Primes.sumPrimesUsingSieve(-10), "sumPrimesUsingSieve(-10) should return 0");
+      assertEquals(0, Primes.sumPrimesUsingSieve(-1), "sumPrimesUsingSieve(-1) should return 0");
+      assertEquals(0, Primes.sumPrimesUsingSieve(-100), "sumPrimesUsingSieve(-100) should return 0");
+    }
 
     @Test
     @DisplayName("Edge case: n=0 should return 0")

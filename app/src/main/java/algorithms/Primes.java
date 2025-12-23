@@ -26,8 +26,12 @@ public class Primes {
    * 
    * @param limit The upper bound (inclusive) for the sieve.
    * @return A boolean array where isPrime[i] is true if i is prime, false otherwise.
+   *         Returns empty array (size 0) for negative inputs.
    */
-  private static boolean[] generateSieve(int limit) {
+  public static boolean[] generateSieve(int limit) {
+    if (limit < 0) {
+      return new boolean[0];
+    }
     if (limit < 2) {
       return new boolean[limit + 1];
     }
@@ -195,92 +199,11 @@ public class Primes {
   }
 
   /**
-   * Generates a boolean array using the Sieve of Eratosthenes algorithm.
-   * The array indicates which numbers from 0 to n are prime.
-   * 
-   * <p>Algorithm: Sieve of Eratosthenes
-   * <ul>
-   *   <li>Time complexity: O(n log log n)</li>
-   *   <li>Space complexity: O(n)</li>
-   * </ul>
-   * 
-   * <p>This is significantly faster than checking each number individually,
-   * especially for large values of n. The algorithm works by iteratively marking
-   * the multiples of each prime as composite, starting from 2.
-   * 
-   * @param n The upper limit (inclusive) for prime generation.
-   * @return A boolean array where sieve[i] is true if i is prime, false otherwise.
-   *         Returns array with all false for n < 2.
-   */
-  public static boolean[] generateSieve(int n) {
-    if (n < 2) {
-      // For n < 2, there are no primes
-      boolean[] sieve = new boolean[n + 1];
-      return sieve; // All false by default
-    }
-
-    boolean[] sieve = new boolean[n + 1];
-    
-    // Initialize all numbers as potentially prime
-    for (int i = 2; i <= n; i++) {
-      sieve[i] = true;
-    }
-    
-    // Sieve of Eratosthenes algorithm
-    for (int i = 2; i * i <= n; i++) {
-      if (sieve[i]) {
-        // Mark all multiples of i as composite
-        // Start from i*i as smaller multiples already marked by smaller primes
-        for (int j = i * i; j <= n; j += i) {
-          sieve[j] = false;
-        }
-      }
-    }
-    
-    return sieve;
-  }
-
-  /**
-   * Returns all prime numbers up to and including n using the Sieve of Eratosthenes.
-   * 
-   * <p>Algorithm: Sieve of Eratosthenes
-   * <ul>
-   *   <li>Time complexity: O(n log log n)</li>
-   *   <li>Space complexity: O(n)</li>
-   * </ul>
-   * 
-   * <p>This method is significantly faster than repeatedly calling IsPrime() for each number,
-   * making it ideal for generating all primes up to a limit. For n=1,000,000, this can be
-   * orders of magnitude faster than the naive approach.
-   * 
-   * @param n The upper limit (inclusive) for prime generation.
-   * @return A Vector containing all prime numbers from 2 to n in ascending order.
-   *         Returns empty vector for n < 2.
-   */
-  public static Vector<Integer> getAllPrimesUpTo(int n) {
-    Vector<Integer> primes = new Vector<Integer>();
-    
-    if (n < 2) {
-      return primes; // No primes less than 2
-    }
-    
-    boolean[] sieve = generateSieve(n);
-    
-    // Collect all prime numbers
-    for (int i = 2; i <= n; i++) {
-      if (sieve[i]) {
-        primes.add(i);
-      }
-    }
-    
-    return primes;
-  }
-
-  /**
    * Sums all prime numbers from 0 to n using the Sieve of Eratosthenes algorithm.
    * 
-   * <p>This is an optimized alternative to SumPrimes() that uses the Sieve of Eratosthenes
-   * algorithm for significantly improved performance on large values of n.
+   * <p><b>Difference from SumPrimes():</b> This method returns a long instead of int,
+   * allowing it to handle larger sums without overflow. Both methods use the same
+   * sieve algorithm and produce identical results within int range.
    * 
    * <p>Algorithm: Sieve of Eratosthenes
    * <ul>
@@ -290,15 +213,15 @@ public class Primes {
    * 
    * <p>Performance comparison:
    * <ul>
-   *   <li>SumPrimes(): O(n√n) - checks primality of each number individually</li>
-   *   <li>sumPrimesUsingSieve(): O(n log log n) - generates all primes at once</li>
+   *   <li>SumPrimes(): O(n log log n) - returns int</li>
+   *   <li>sumPrimesUsingSieve(): O(n log log n) - returns long for larger values</li>
    * </ul>
    * 
-   * <p>For large n (e.g., n=1,000,000), this method can be orders of magnitude faster.
-   * Both methods produce identical results.
+   * <p>For large n (e.g., n=1,000,000), both methods have similar performance,
+   * but this method can handle larger sums without integer overflow.
    * 
    * @param n The upper limit (exclusive) for prime summation.
-   * @return The sum of all prime numbers less than n.
+   * @return The sum of all prime numbers less than n as a long.
    */
   public static long sumPrimesUsingSieve(int n) {
     if (n < 2) {
