@@ -3,7 +3,11 @@ import java.util.ArrayList;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class GenVector {
+public final class GenVector {
+  private GenVector() {
+    throw new UnsupportedOperationException("Utility class");
+  }
+
   /**
    * Generates a random list of integers, length n
    *
@@ -22,3 +26,4 @@ public class GenVector {
     return ret;
   }
 }
+

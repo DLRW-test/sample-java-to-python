@@ -1,10 +1,13 @@
 package datastructures;
 import java.util.ArrayList;
 import java.util.Collections;
-
 import java.util.LinkedList;
 
-public class DsLinkedList {
+public final class DsLinkedList {
+  private DsLinkedList() {
+    throw new UnsupportedOperationException("Utility class");
+  }
+
   /**
    * Shuffles a linked list into a new list
    *
@@ -30,3 +33,4 @@ public class DsLinkedList {
     return new LinkedList<>(l.subList(start, end));
   }
 }
+

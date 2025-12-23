@@ -3,7 +3,11 @@ package datastructures;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class DsVector {
+public final class DsVector {
+  private DsVector() {
+    throw new UnsupportedOperationException("Utility class");
+  }
+
   /**
    * Adds 1 to each element of the ArrayList
    *

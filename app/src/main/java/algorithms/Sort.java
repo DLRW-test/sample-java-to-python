@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.PriorityQueue;
 
-public class Sort {
+public final class Sort {
+  private Sort() {
+    throw new UnsupportedOperationException("Utility class");
+  }
+
   /**
    * Sorts a vector of integers in ascending order
    *
    * @param v The vector to be sorted
    */
-  public static void SortVector(ArrayList<Integer> v) {
+  public static void sortVector(ArrayList<Integer> v) {
     Collections.sort(v);
   }
 
@@ -20,7 +24,7 @@ public class Sort {
    * @param v           The vector to be partitioned
    * @param pivot_value
    */
-  public static void DutchFlagPartition(ArrayList<Integer> v, int pivot_value) {
+  public static void dutchFlagPartition(ArrayList<Integer> v, int pivot_value) {
     int next_value = 0;
 
     for (int i = 0; i < v.size(); i++) {
@@ -45,7 +49,7 @@ public class Sort {
    * @param n The number of elements to return
    * @return A vector of the largest n elements in v
    */
-  public static ArrayList<Integer> MaxN(ArrayList<Integer> v, int n) {
+  public static ArrayList<Integer> maxN(ArrayList<Integer> v, int n) {
     if (n <= 0 || n > v.size()) {
       return new ArrayList<>();
     }
@@ -67,3 +71,4 @@ public class Sort {
     return ret;
   }
 }
+

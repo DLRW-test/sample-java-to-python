@@ -1,6 +1,10 @@
 package control;
 
-public class Single {
+public final class Single {
+  private Single() {
+    throw new UnsupportedOperationException("Utility class");
+  }
+
   /**
    * This method is used to calculate the sum of the first n natural numbers.
    * n exclusive
@@ -33,6 +37,7 @@ public class Single {
    *
    * @param n The number of natural numbers to sum.
    * @param m The modulus.
+   * @return The sum of the first n natural numbers, modulo m.
    */
   public static int sumModulus(int n, int m) {
     int k = (n - 1) / m;

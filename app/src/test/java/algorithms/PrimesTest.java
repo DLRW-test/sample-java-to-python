@@ -20,60 +20,60 @@ public class PrimesTest {
     @Test
     @DisplayName("Edge case: negative numbers should return false")
     public void testIsPrimeNegative() {
-      assertFalse(Primes.IsPrime(-1), "IsPrime(-1) should return false");
-      assertFalse(Primes.IsPrime(-5), "IsPrime(-5) should return false");
-      assertFalse(Primes.IsPrime(-100), "IsPrime(-100) should return false");
+      assertFalse(Primes.isPrime(-1), "IsPrime(-1) should return false");
+      assertFalse(Primes.isPrime(-5), "IsPrime(-5) should return false");
+      assertFalse(Primes.isPrime(-100), "IsPrime(-100) should return false");
     }
 
     @Test
     @DisplayName("Edge case: n=0 should return false")
     public void testIsPrimeZero() {
-      assertFalse(Primes.IsPrime(0), "IsPrime(0) should return false");
+      assertFalse(Primes.isPrime(0), "IsPrime(0) should return false");
     }
 
     @Test
     @DisplayName("Edge case: n=1 should return false")
     public void testIsPrimeOne() {
-      assertFalse(Primes.IsPrime(1), "IsPrime(1) should return false");
+      assertFalse(Primes.isPrime(1), "IsPrime(1) should return false");
     }
 
     @Test
     @DisplayName("n=2 (smallest prime) should return true")
     public void testIsPrimeTwo() {
-      assertTrue(Primes.IsPrime(2), "IsPrime(2) should return true");
+      assertTrue(Primes.isPrime(2), "IsPrime(2) should return true");
     }
 
     @Test
     @DisplayName("Small primes: 3, 5, 7 should return true")
     public void testIsPrimeSmallPrimes() {
-      assertTrue(Primes.IsPrime(3), "IsPrime(3) should return true");
-      assertTrue(Primes.IsPrime(5), "IsPrime(5) should return true");
-      assertTrue(Primes.IsPrime(7), "IsPrime(7) should return true");
+      assertTrue(Primes.isPrime(3), "IsPrime(3) should return true");
+      assertTrue(Primes.isPrime(5), "IsPrime(5) should return true");
+      assertTrue(Primes.isPrime(7), "IsPrime(7) should return true");
     }
 
     @Test
     @DisplayName("Small composites: 4, 6, 8, 9 should return false")
     public void testIsPrimeSmallComposites() {
-      assertFalse(Primes.IsPrime(4), "IsPrime(4) should return false");
-      assertFalse(Primes.IsPrime(6), "IsPrime(6) should return false");
-      assertFalse(Primes.IsPrime(8), "IsPrime(8) should return false");
-      assertFalse(Primes.IsPrime(9), "IsPrime(9) should return false");
+      assertFalse(Primes.isPrime(4), "IsPrime(4) should return false");
+      assertFalse(Primes.isPrime(6), "IsPrime(6) should return false");
+      assertFalse(Primes.isPrime(8), "IsPrime(8) should return false");
+      assertFalse(Primes.isPrime(9), "IsPrime(9) should return false");
     }
 
     @Test
     @DisplayName("Larger primes: 13, 17, 19 should return true")
     public void testIsPrimeLargerPrimes() {
-      assertTrue(Primes.IsPrime(13), "IsPrime(13) should return true");
-      assertTrue(Primes.IsPrime(17), "IsPrime(17) should return true");
-      assertTrue(Primes.IsPrime(19), "IsPrime(19) should return true");
+      assertTrue(Primes.isPrime(13), "IsPrime(13) should return true");
+      assertTrue(Primes.isPrime(17), "IsPrime(17) should return true");
+      assertTrue(Primes.isPrime(19), "IsPrime(19) should return true");
     }
 
     @Test
     @DisplayName("Larger composites: 15, 20, 100 should return false")
     public void testIsPrimeLargerComposites() {
-      assertFalse(Primes.IsPrime(15), "IsPrime(15) should return false");
-      assertFalse(Primes.IsPrime(20), "IsPrime(20) should return false");
-      assertFalse(Primes.IsPrime(100), "IsPrime(100) should return false");
+      assertFalse(Primes.isPrime(15), "IsPrime(15) should return false");
+      assertFalse(Primes.isPrime(20), "IsPrime(20) should return false");
+      assertFalse(Primes.isPrime(100), "IsPrime(100) should return false");
     }
   }
 
@@ -84,19 +84,19 @@ public class PrimesTest {
     @Test
     @DisplayName("Edge case: n=0 should return 0")
     public void testSumPrimesZero() {
-      assertEquals(0, Primes.SumPrimes(0), "SumPrimes(0) should return 0");
+      assertEquals(0, Primes.sumPrimes(0), "SumPrimes(0) should return 0");
     }
 
     @Test
     @DisplayName("Edge case: n=1 should return 0 (no primes less than 1)")
     public void testSumPrimesOne() {
-      assertEquals(0, Primes.SumPrimes(1), "SumPrimes(1) should return 0");
+      assertEquals(0, Primes.sumPrimes(1), "SumPrimes(1) should return 0");
     }
 
     @Test
     @DisplayName("Edge case: n=2 should return 0 (no primes less than 2)")
     public void testSumPrimesTwo() {
-      assertEquals(0, Primes.SumPrimes(2), "SumPrimes(2) should return 0");
+      assertEquals(0, Primes.sumPrimes(2), "SumPrimes(2) should return 0");
     }
 
     @Test
@@ -104,7 +104,7 @@ public class PrimesTest {
     public void testSumPrimesFive() {
       // Primes less than 5 are: 2, 3
       // Sum = 2 + 3 = 5
-      assertEquals(5, Primes.SumPrimes(5), "SumPrimes(5) should return 5");
+      assertEquals(5, Primes.sumPrimes(5), "SumPrimes(5) should return 5");
     }
 
     @Test
@@ -112,7 +112,7 @@ public class PrimesTest {
     public void testSumPrimesSix() {
       // Primes less than 6 are: 2, 3, 5
       // Sum = 2 + 3 + 5 = 10
-      assertEquals(10, Primes.SumPrimes(6), "SumPrimes(6) should return 10");
+      assertEquals(10, Primes.sumPrimes(6), "SumPrimes(6) should return 10");
     }
 
     @Test
@@ -120,7 +120,7 @@ public class PrimesTest {
     public void testSumPrimesTen() {
       // Primes less than 10 are: 2, 3, 5, 7
       // Sum = 2 + 3 + 5 + 7 = 17
-      assertEquals(17, Primes.SumPrimes(10), "SumPrimes(10) should return 17");
+      assertEquals(17, Primes.sumPrimes(10), "SumPrimes(10) should return 17");
     }
 
     @Test
@@ -128,7 +128,7 @@ public class PrimesTest {
     public void testSumPrimesEleven() {
       // Primes less than 11 are: 2, 3, 5, 7
       // Sum = 2 + 3 + 5 + 7 = 17
-      assertEquals(17, Primes.SumPrimes(11), "SumPrimes(11) should return 17");
+      assertEquals(17, Primes.sumPrimes(11), "SumPrimes(11) should return 17");
     }
 
     @Test
@@ -136,7 +136,7 @@ public class PrimesTest {
     public void testSumPrimesTwelve() {
       // Primes less than 12 are: 2, 3, 5, 7, 11
       // Sum = 2 + 3 + 5 + 7 + 11 = 28
-      assertEquals(28, Primes.SumPrimes(12), "SumPrimes(12) should return 28");
+      assertEquals(28, Primes.sumPrimes(12), "SumPrimes(12) should return 28");
     }
   }
 
@@ -147,7 +147,7 @@ public class PrimesTest {
     @Test
     @DisplayName("Edge case: n=1 should return empty list")
     public void testPrimeFactorsOne() {
-      ArrayList<Integer> result = Primes.PrimeFactors(1);
+      ArrayList<Integer> result = Primes.primeFactors(1);
       assertEquals(0, result.size(), "PrimeFactors(1) should return empty list");
     }
 
@@ -155,28 +155,28 @@ public class PrimesTest {
     @DisplayName("Edge case: n=2 should return [2]")
     public void testPrimeFactorsTwo() {
       ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2));
-      assertEquals(expected, Primes.PrimeFactors(2), "PrimeFactors(2) should return [2]");
+      assertEquals(expected, Primes.primeFactors(2), "PrimeFactors(2) should return [2]");
     }
 
     @Test
     @DisplayName("Prime input: n=7 should return [7]")
     public void testPrimeFactorsSeven() {
       ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(7));
-      assertEquals(expected, Primes.PrimeFactors(7), "PrimeFactors(7) should return [7]");
+      assertEquals(expected, Primes.primeFactors(7), "PrimeFactors(7) should return [7]");
     }
 
     @Test
     @DisplayName("Prime input: n=11 should return [11]")
     public void testPrimeFactorsEleven() {
       ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(11));
-      assertEquals(expected, Primes.PrimeFactors(11), "PrimeFactors(11) should return [11]");
+      assertEquals(expected, Primes.primeFactors(11), "PrimeFactors(11) should return [11]");
     }
 
     @Test
     @DisplayName("Prime input: n=13 should return [13]")
     public void testPrimeFactorsThirteen() {
       ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(13));
-      assertEquals(expected, Primes.PrimeFactors(13), "PrimeFactors(13) should return [13]");
+      assertEquals(expected, Primes.primeFactors(13), "PrimeFactors(13) should return [13]");
     }
 
     @Test
@@ -184,7 +184,7 @@ public class PrimesTest {
     public void testPrimeFactorsTwelve() {
       // 12 = 2 * 2 * 3
       ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2, 2, 3));
-      assertEquals(expected, Primes.PrimeFactors(12), "PrimeFactors(12) should return [2, 2, 3]");
+      assertEquals(expected, Primes.primeFactors(12), "PrimeFactors(12) should return [2, 2, 3]");
     }
 
     @Test
@@ -192,7 +192,7 @@ public class PrimesTest {
     public void testPrimeFactorsEighteen() {
       // 18 = 2 * 3 * 3
       ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2, 3, 3));
-      assertEquals(expected, Primes.PrimeFactors(18), "PrimeFactors(18) should return [2, 3, 3]");
+      assertEquals(expected, Primes.primeFactors(18), "PrimeFactors(18) should return [2, 3, 3]");
     }
 
     @Test
@@ -200,7 +200,7 @@ public class PrimesTest {
     public void testPrimeFactorsTwentyFour() {
       // 24 = 2 * 2 * 2 * 3
       ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2, 2, 2, 3));
-      assertEquals(expected, Primes.PrimeFactors(24), "PrimeFactors(24) should return [2, 2, 2, 3]");
+      assertEquals(expected, Primes.primeFactors(24), "PrimeFactors(24) should return [2, 2, 2, 3]");
     }
 
     @Test
@@ -208,7 +208,7 @@ public class PrimesTest {
     public void testPrimeFactorsFour() {
       // 4 = 2 * 2
       ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2, 2));
-      assertEquals(expected, Primes.PrimeFactors(4), "PrimeFactors(4) should return [2, 2]");
+      assertEquals(expected, Primes.primeFactors(4), "PrimeFactors(4) should return [2, 2]");
     }
 
     @Test
@@ -216,7 +216,7 @@ public class PrimesTest {
     public void testPrimeFactorsNine() {
       // 9 = 3 * 3
       ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(3, 3));
-      assertEquals(expected, Primes.PrimeFactors(9), "PrimeFactors(9) should return [3, 3]");
+      assertEquals(expected, Primes.primeFactors(9), "PrimeFactors(9) should return [3, 3]");
     }
 
     @Test
@@ -224,7 +224,7 @@ public class PrimesTest {
     public void testPrimeFactorsSixteen() {
       // 16 = 2 * 2 * 2 * 2
       ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2, 2, 2, 2));
-      assertEquals(expected, Primes.PrimeFactors(16), "PrimeFactors(16) should return [2, 2, 2, 2]");
+      assertEquals(expected, Primes.primeFactors(16), "PrimeFactors(16) should return [2, 2, 2, 2]");
     }
 
     @Test
@@ -232,7 +232,7 @@ public class PrimesTest {
     public void testPrimeFactorsThirty() {
       // 30 = 2 * 3 * 5
       ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2, 3, 5));
-      assertEquals(expected, Primes.PrimeFactors(30), "PrimeFactors(30) should return [2, 3, 5]");
+      assertEquals(expected, Primes.primeFactors(30), "PrimeFactors(30) should return [2, 3, 5]");
     }
   }
 

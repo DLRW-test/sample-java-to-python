@@ -6,7 +6,7 @@ import control.Double;
 import control.Single;
 import datastructures.DsVector;
 import generator.GenVector;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class App {
     public static void single() {
@@ -39,8 +39,8 @@ public class App {
     }
 
     public static void vector() {
-        Vector<Integer> inputVec = GenVector.generateVector(10, 10);
-        Vector<Integer> inputVec2 = GenVector.generateVector(10, 10);
+        ArrayList<Integer> inputVec = GenVector.generateVector(10, 10);
+        ArrayList<Integer> inputVec2 = GenVector.generateVector(10, 10);
 
         System.out.println("Vector");
         System.out.println("------");
@@ -68,29 +68,29 @@ public class App {
     public static void primes() {
         System.out.println("Primes");
         System.out.println("------");
-        System.out.println(String.format("IsPrime(10): %s", Primes.IsPrime(10)));
+        System.out.println(String.format("IsPrime(10): %s", Primes.isPrime(10)));
         System.out.println(
-                String.format("SumPrimes(10): %s", Primes.SumPrimes(10)));
+                String.format("SumPrimes(10): %s", Primes.sumPrimes(10)));
         System.out.println(String.format("PrimeFactors(10): %s",
-                Primes.PrimeFactors(10).toString()));
+                Primes.primeFactors(10).toString()));
         System.out.println();
     }
 
     public static void sort() {
-        Vector<Integer> initialVec = GenVector.generateVector(20, 10);
+        ArrayList<Integer> initialVec = GenVector.generateVector(20, 10);
         System.out.println("Sort");
         System.out.println("------");
-        Vector<Integer> inputVec0 = new Vector<Integer>(initialVec);
-        Sort.SortVector(inputVec0);
+        ArrayList<Integer> inputVec0 = new ArrayList<Integer>(initialVec);
+        Sort.sortVector(inputVec0);
         System.out.println(String.format(
                 "SortVector(%s): %s", initialVec.toString(), inputVec0.toString()));
-        Vector<Integer> inputVec1 = new Vector<Integer>(initialVec);
-        Sort.DutchFlagPartition(inputVec1, 5);
+        ArrayList<Integer> inputVec1 = new ArrayList<Integer>(initialVec);
+        Sort.dutchFlagPartition(inputVec1, 5);
         System.out.println(String.format("DutchFlagPartition(%s, 5): %s",
-                inputVec1.toString(),
+                initialVec.toString(),
                 inputVec1.toString()));
         System.out.println(String.format("MaxN(%s, 5): %s", initialVec.toString(),
-                Sort.MaxN(initialVec, 5).toString()));
+                Sort.maxN(initialVec, 5).toString()));
         System.out.println();
     }
 

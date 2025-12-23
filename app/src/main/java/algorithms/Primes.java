@@ -1,7 +1,11 @@
 package algorithms;
 import java.util.ArrayList;
 
-public class Primes {
+public final class Primes {
+  private Primes() {
+    throw new UnsupportedOperationException("Utility class");
+  }
+
   /**
    * Generates a sieve of Eratosthenes for prime detection up to the given limit.
    * This is the core algorithm used by all prime-related methods in this class.
@@ -74,7 +78,7 @@ public class Primes {
    * @param n The number to check.
    * @return True if the number is prime, false otherwise.
    */
-  public static boolean IsPrime(int n) {
+  public static boolean isPrime(int n) {
     if (n < 2) {
       return false;
     }
@@ -102,7 +106,7 @@ public class Primes {
    * @param n The upper bound (exclusive) - sums all primes less than n.
    * @return The sum of all prime numbers less than n.
    */
-  public static int SumPrimes(int n) {
+  public static int sumPrimes(int n) {
     if (n <= 2) {
       return 0;
     }
@@ -183,7 +187,7 @@ public class Primes {
    * @param n The number to find the prime factors of.
    * @return An ArrayList of all prime factors of n (with repetition for prime powers).
    */
-  public static ArrayList<Integer> PrimeFactors(int n) {
+  public static ArrayList<Integer> primeFactors(int n) {
     ArrayList<Integer> ret = new ArrayList<>();
 
     for (int i = 2; i * i <= n; i++) { // Optimized loop condition

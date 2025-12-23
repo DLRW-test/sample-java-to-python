@@ -2,7 +2,11 @@ package control;
 
 import java.util.HashMap;
 
-public class Double {
+public final class Double {
+  private Double() {
+    throw new UnsupportedOperationException("Utility class");
+  }
+
   /**
    * Sums all values squared from 0 to n
    *
