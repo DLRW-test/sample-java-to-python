@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Vector;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -145,37 +145,37 @@ public class PrimesTest {
   class PrimeFactorsTests {
 
     @Test
-    @DisplayName("Edge case: n=1 should return empty vector")
+    @DisplayName("Edge case: n=1 should return empty list")
     public void testPrimeFactorsOne() {
-      Vector<Integer> result = Primes.PrimeFactors(1);
-      assertEquals(0, result.size(), "PrimeFactors(1) should return empty vector");
+      ArrayList<Integer> result = Primes.PrimeFactors(1);
+      assertEquals(0, result.size(), "PrimeFactors(1) should return empty list");
     }
 
     @Test
     @DisplayName("Edge case: n=2 should return [2]")
     public void testPrimeFactorsTwo() {
-      Vector<Integer> expected = new Vector<>(Arrays.asList(2));
+      ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2));
       assertEquals(expected, Primes.PrimeFactors(2), "PrimeFactors(2) should return [2]");
     }
 
     @Test
     @DisplayName("Prime input: n=7 should return [7]")
     public void testPrimeFactorsSeven() {
-      Vector<Integer> expected = new Vector<>(Arrays.asList(7));
+      ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(7));
       assertEquals(expected, Primes.PrimeFactors(7), "PrimeFactors(7) should return [7]");
     }
 
     @Test
     @DisplayName("Prime input: n=11 should return [11]")
     public void testPrimeFactorsEleven() {
-      Vector<Integer> expected = new Vector<>(Arrays.asList(11));
+      ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(11));
       assertEquals(expected, Primes.PrimeFactors(11), "PrimeFactors(11) should return [11]");
     }
 
     @Test
     @DisplayName("Prime input: n=13 should return [13]")
     public void testPrimeFactorsThirteen() {
-      Vector<Integer> expected = new Vector<>(Arrays.asList(13));
+      ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(13));
       assertEquals(expected, Primes.PrimeFactors(13), "PrimeFactors(13) should return [13]");
     }
 
@@ -183,7 +183,7 @@ public class PrimesTest {
     @DisplayName("Composite input: n=12 should return [2, 2, 3]")
     public void testPrimeFactorsTwelve() {
       // 12 = 2 * 2 * 3
-      Vector<Integer> expected = new Vector<>(Arrays.asList(2, 2, 3));
+      ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2, 2, 3));
       assertEquals(expected, Primes.PrimeFactors(12), "PrimeFactors(12) should return [2, 2, 3]");
     }
 
@@ -191,7 +191,7 @@ public class PrimesTest {
     @DisplayName("Composite input: n=18 should return [2, 3, 3]")
     public void testPrimeFactorsEighteen() {
       // 18 = 2 * 3 * 3
-      Vector<Integer> expected = new Vector<>(Arrays.asList(2, 3, 3));
+      ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2, 3, 3));
       assertEquals(expected, Primes.PrimeFactors(18), "PrimeFactors(18) should return [2, 3, 3]");
     }
 
@@ -199,7 +199,7 @@ public class PrimesTest {
     @DisplayName("Composite input: n=24 should return [2, 2, 2, 3]")
     public void testPrimeFactorsTwentyFour() {
       // 24 = 2 * 2 * 2 * 3
-      Vector<Integer> expected = new Vector<>(Arrays.asList(2, 2, 2, 3));
+      ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2, 2, 2, 3));
       assertEquals(expected, Primes.PrimeFactors(24), "PrimeFactors(24) should return [2, 2, 2, 3]");
     }
 
@@ -207,7 +207,7 @@ public class PrimesTest {
     @DisplayName("Perfect square: n=4 should return [2, 2]")
     public void testPrimeFactorsFour() {
       // 4 = 2 * 2
-      Vector<Integer> expected = new Vector<>(Arrays.asList(2, 2));
+      ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2, 2));
       assertEquals(expected, Primes.PrimeFactors(4), "PrimeFactors(4) should return [2, 2]");
     }
 
@@ -215,7 +215,7 @@ public class PrimesTest {
     @DisplayName("Perfect square: n=9 should return [3, 3]")
     public void testPrimeFactorsNine() {
       // 9 = 3 * 3
-      Vector<Integer> expected = new Vector<>(Arrays.asList(3, 3));
+      ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(3, 3));
       assertEquals(expected, Primes.PrimeFactors(9), "PrimeFactors(9) should return [3, 3]");
     }
 
@@ -223,7 +223,7 @@ public class PrimesTest {
     @DisplayName("Perfect square: n=16 should return [2, 2, 2, 2]")
     public void testPrimeFactorsSixteen() {
       // 16 = 2 * 2 * 2 * 2
-      Vector<Integer> expected = new Vector<>(Arrays.asList(2, 2, 2, 2));
+      ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2, 2, 2, 2));
       assertEquals(expected, Primes.PrimeFactors(16), "PrimeFactors(16) should return [2, 2, 2, 2]");
     }
 
@@ -231,7 +231,7 @@ public class PrimesTest {
     @DisplayName("Composite with larger factors: n=30 should return [2, 3, 5]")
     public void testPrimeFactorsThirty() {
       // 30 = 2 * 3 * 5
-      Vector<Integer> expected = new Vector<>(Arrays.asList(2, 3, 5));
+      ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2, 3, 5));
       assertEquals(expected, Primes.PrimeFactors(30), "PrimeFactors(30) should return [2, 3, 5]");
     }
   }
@@ -330,55 +330,55 @@ public class PrimesTest {
   class GetAllPrimesUpToTests {
 
     @Test
-    @DisplayName("Edge case: negative input should return empty vector")
+    @DisplayName("Edge case: negative input should return empty list")
     public void testGetAllPrimesUpToNegative() {
-      Vector<Integer> primes = Primes.getAllPrimesUpTo(-5);
-      assertEquals(0, primes.size(), "getAllPrimesUpTo(-5) should return empty vector");
+      ArrayList<Integer> primes = Primes.getAllPrimesUpTo(-5);
+      assertEquals(0, primes.size(), "getAllPrimesUpTo(-5) should return empty list");
       
       primes = Primes.getAllPrimesUpTo(-100);
-      assertEquals(0, primes.size(), "getAllPrimesUpTo(-100) should return empty vector");
+      assertEquals(0, primes.size(), "getAllPrimesUpTo(-100) should return empty list");
     }
 
     @Test
-    @DisplayName("Edge case: n=0 should return empty vector")
+    @DisplayName("Edge case: n=0 should return empty list")
     public void testGetAllPrimesUpToZero() {
-      Vector<Integer> primes = Primes.getAllPrimesUpTo(0);
-      assertEquals(0, primes.size(), "getAllPrimesUpTo(0) should return empty vector");
+      ArrayList<Integer> primes = Primes.getAllPrimesUpTo(0);
+      assertEquals(0, primes.size(), "getAllPrimesUpTo(0) should return empty list");
     }
 
     @Test
-    @DisplayName("Edge case: n=1 should return empty vector")
+    @DisplayName("Edge case: n=1 should return empty list")
     public void testGetAllPrimesUpToOne() {
-      Vector<Integer> primes = Primes.getAllPrimesUpTo(1);
-      assertEquals(0, primes.size(), "getAllPrimesUpTo(1) should return empty vector");
+      ArrayList<Integer> primes = Primes.getAllPrimesUpTo(1);
+      assertEquals(0, primes.size(), "getAllPrimesUpTo(1) should return empty list");
     }
 
     @Test
     @DisplayName("Edge case: n=2 should return [2]")
     public void testGetAllPrimesUpToTwo() {
-      Vector<Integer> expected = new Vector<>(Arrays.asList(2));
+      ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2));
       assertEquals(expected, Primes.getAllPrimesUpTo(2), "getAllPrimesUpTo(2) should return [2]");
     }
 
     @Test
     @DisplayName("n=10 should return [2, 3, 5, 7]")
     public void testGetAllPrimesUpToTen() {
-      Vector<Integer> expected = new Vector<>(Arrays.asList(2, 3, 5, 7));
+      ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2, 3, 5, 7));
       assertEquals(expected, Primes.getAllPrimesUpTo(10), "getAllPrimesUpTo(10) should return [2, 3, 5, 7]");
     }
 
     @Test
     @DisplayName("n=20 should return correct primes")
     public void testGetAllPrimesUpToTwenty() {
-      Vector<Integer> expected = new Vector<>(Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19));
+      ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19));
       assertEquals(expected, Primes.getAllPrimesUpTo(20), "getAllPrimesUpTo(20) should return all primes up to 20");
     }
 
     @Test
     @DisplayName("n=30 should return 10 primes")
     public void testGetAllPrimesUpToThirty() {
-      Vector<Integer> primes = Primes.getAllPrimesUpTo(30);
-      Vector<Integer> expected = new Vector<>(Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19, 23, 29));
+      ArrayList<Integer> primes = Primes.getAllPrimesUpTo(30);
+      ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19, 23, 29));
       assertEquals(expected, primes, "getAllPrimesUpTo(30) should return correct primes");
       assertEquals(10, primes.size(), "There should be 10 primes up to 30");
     }
@@ -386,7 +386,7 @@ public class PrimesTest {
     @Test
     @DisplayName("n=100 should return 25 primes")
     public void testGetAllPrimesUpToHundred() {
-      Vector<Integer> primes = Primes.getAllPrimesUpTo(100);
+      ArrayList<Integer> primes = Primes.getAllPrimesUpTo(100);
       assertEquals(25, primes.size(), "There should be 25 primes up to 100");
       
       // Verify first and last primes
@@ -397,7 +397,7 @@ public class PrimesTest {
     @Test
     @DisplayName("Verify all returned numbers are actually prime using IsPrime")
     public void testGetAllPrimesUpToCorrectnessCheck() {
-      Vector<Integer> primes = Primes.getAllPrimesUpTo(50);
+      ArrayList<Integer> primes = Primes.getAllPrimesUpTo(50);
       
       // Every number returned should pass IsPrime check
       for (int prime : primes) {
@@ -538,7 +538,7 @@ public class PrimesTest {
       int n = 1000000;
       
       long start = System.nanoTime();
-      Vector<Integer> primes = Primes.getAllPrimesUpTo(n);
+      ArrayList<Integer> primes = Primes.getAllPrimesUpTo(n);
       long end = System.nanoTime();
       long duration = end - start;
       

@@ -1,5 +1,5 @@
 package algorithms;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Primes {
   /**
@@ -130,7 +130,7 @@ public class Primes {
    * <p><b>Performance:</b></p>
    * <ul>
    *   <li>Time Complexity: O(n log log n) for sieve generation + O(n) for collection</li>
-   *   <li>Space Complexity: O(n) for sieve + O(π(n)) for result vector (where π(n) ≈ n/ln(n))</li>
+   *   <li>Space Complexity: O(n) for sieve + O(π(n)) for result list (where π(n) ≈ n/ln(n))</li>
    * </ul>
    * 
    * <p><b>Memory Usage:</b> Allocates approximately n bytes for the sieve array plus
@@ -144,10 +144,10 @@ public class Primes {
    * </ul>
    * 
    * @param n The upper bound (inclusive) for prime generation.
-   * @return A Vector containing all prime numbers from 2 to n (inclusive).
+   * @return An ArrayList containing all prime numbers from 2 to n (inclusive).
    */
-  public static Vector<Integer> getAllPrimesUpTo(int n) {
-    Vector<Integer> primes = new Vector<Integer>();
+  public static ArrayList<Integer> getAllPrimesUpTo(int n) {
+    ArrayList<Integer> primes = new ArrayList<>();
     
     if (n < 2) {
       return primes;
@@ -174,17 +174,17 @@ public class Primes {
    * <p><b>Performance:</b></p>
    * <ul>
    *   <li>Time Complexity: O(√n) in the worst case (when n is prime)</li>
-   *   <li>Space Complexity: O(log n) for the result vector</li>
+   *   <li>Space Complexity: O(log n) for the result list</li>
    * </ul>
    * 
    * <p><b>Note:</b> For factoring multiple numbers, consider pre-generating a sieve
    * of primes up to √(max_n) and using those as trial divisors for improved performance.</p>
    * 
    * @param n The number to find the prime factors of.
-   * @return A vector of all prime factors of n (with repetition for prime powers).
+   * @return An ArrayList of all prime factors of n (with repetition for prime powers).
    */
-  public static Vector<Integer> PrimeFactors(int n) {
-    Vector<Integer> ret = new Vector<Integer>();
+  public static ArrayList<Integer> PrimeFactors(int n) {
+    ArrayList<Integer> ret = new ArrayList<>();
 
     for (int i = 2; i * i <= n; i++) { // Optimized loop condition
       while (n % i == 0) { // Optimized to handle repeated factors
