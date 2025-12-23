@@ -1,6 +1,7 @@
 package algorithms;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -15,6 +16,15 @@ public class SortTest {
   @Nested
   @DisplayName("SortVector(ArrayList<Integer> v) tests")
   class SortVectorTests {
+
+    @Test
+    @DisplayName("Exception: null ArrayList should throw NullPointerException")
+    public void testSortVectorNull() {
+      NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+        Sort.sortVector(null);
+      }, "sortVector(null) should throw NullPointerException");
+      assertTrue(exception.getMessage().contains("null"), "Exception message should mention 'null'");
+    }
 
     @Test
     @DisplayName("Edge case: empty vector should remain empty")
@@ -91,6 +101,15 @@ public class SortTest {
   @Nested
   @DisplayName("DutchFlagPartition(ArrayList<Integer> v, int pivot) tests")
   class DutchFlagPartitionTests {
+
+    @Test
+    @DisplayName("Exception: null ArrayList should throw NullPointerException")
+    public void testDutchFlagPartitionNull() {
+      NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+        Sort.dutchFlagPartition(null, 5);
+      }, "dutchFlagPartition(null, 5) should throw NullPointerException");
+      assertTrue(exception.getMessage().contains("null"), "Exception message should mention 'null'");
+    }
 
     @Test
     @DisplayName("Edge case: empty vector should remain empty")
@@ -225,19 +244,32 @@ public class SortTest {
   class MaxNTests {
 
     @Test
-    @DisplayName("Edge case: n=0 should return empty vector")
-    public void testMaxNZero() {
-      ArrayList<Integer> v = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
-      ArrayList<Integer> result = Sort.maxN(v, 0);
-      assertEquals(0, result.size(), "MaxN with n=0 should return empty vector");
+    @DisplayName("Exception: null ArrayList should throw NullPointerException")
+    public void testMaxNNull() {
+      NullPointerException exception = assertThrows(NullPointerException.class, () -> {
+        Sort.maxN(null, 3);
+      }, "maxN(null, 3) should throw NullPointerException");
+      assertTrue(exception.getMessage().contains("null"), "Exception message should mention 'null'");
     }
 
     @Test
-    @DisplayName("Edge case: negative n should return empty vector")
+    @DisplayName("Exception: negative n should throw IllegalArgumentException")
     public void testMaxNNegative() {
       ArrayList<Integer> v = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
-      ArrayList<Integer> result = Sort.maxN(v, -1);
-      assertEquals(0, result.size(), "MaxN with negative n should return empty vector");
+      IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        Sort.maxN(v, -1);
+      }, "maxN with negative n should throw IllegalArgumentException");
+      assertTrue(exception.getMessage().contains("negative"), "Exception message should mention 'negative'");
+    }
+
+    @Test
+    @DisplayName("Exception: n=0 should throw IllegalArgumentException")
+    public void testMaxNZero() {
+      ArrayList<Integer> v = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+      IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        Sort.maxN(v, 0);
+      }, "maxN with n=0 should throw IllegalArgumentException");
+      assertTrue(exception.getMessage().contains("between 1"), "Exception message should mention valid range");
     }
 
     @Test
@@ -250,19 +282,33 @@ public class SortTest {
     }
 
     @Test
-    @DisplayName("n equals vector size should return empty vector")
+    @DisplayName("Exception: n equals vector size should throw IllegalArgumentException")
     public void testMaxNEqualsSize() {
       ArrayList<Integer> v = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
-      ArrayList<Integer> result = Sort.maxN(v, 5);
-      assertEquals(0, result.size(), "MaxN with n equal to size should return empty vector");
+      IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        Sort.maxN(v, 5);
+      }, "maxN with n equal to size should throw IllegalArgumentException");
+      assertTrue(exception.getMessage().contains("between 1"), "Exception message should mention valid range");
     }
 
     @Test
-    @DisplayName("n > vector size should return empty vector")
+    @DisplayName("Exception: n > vector size should throw IllegalArgumentException")
     public void testMaxNGreaterThanSize() {
       ArrayList<Integer> v = new ArrayList<>(Arrays.asList(1, 2, 3));
-      ArrayList<Integer> result = Sort.maxN(v, 10);
-      assertEquals(0, result.size(), "MaxN with n > size should return empty vector");
+      IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        Sort.maxN(v, 10);
+      }, "maxN with n > size should throw IllegalArgumentException");
+      assertTrue(exception.getMessage().contains("between 1"), "Exception message should mention valid range");
+    }
+
+    @Test
+    @DisplayName("Exception: empty vector should throw IllegalArgumentException")
+    public void testMaxNEmptyVector() {
+      ArrayList<Integer> v = new ArrayList<>();
+      IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        Sort.maxN(v, 3);
+      }, "maxN from empty vector should throw IllegalArgumentException");
+      assertTrue(exception.getMessage().contains("between 1"), "Exception message should mention valid range");
     }
 
     @Test
@@ -311,14 +357,6 @@ public class SortTest {
       ArrayList<Integer> result = Sort.maxN(v, 3);
       ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(7, 7, 7));
       assertEquals(expected, result, "MaxN from identical values should return n copies");
-    }
-
-    @Test
-    @DisplayName("Empty vector should return empty result")
-    public void testMaxNEmptyVector() {
-      ArrayList<Integer> v = new ArrayList<>();
-      ArrayList<Integer> result = Sort.maxN(v, 3);
-      assertEquals(0, result.size(), "MaxN from empty vector should return empty result");
     }
   }
 }

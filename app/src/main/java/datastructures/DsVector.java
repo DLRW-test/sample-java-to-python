@@ -13,8 +13,12 @@ public final class DsVector {
    *
    * @param v the ArrayList to be incremented
    * @return the incremented ArrayList
+   * @throws NullPointerException if v is null
    */
   public static ArrayList<Integer> modifyVector(ArrayList<Integer> v) {
+    if (v == null) {
+      throw new NullPointerException("ArrayList cannot be null");
+    }
     for (int i = 0; i < v.size(); i++) {
       v.set(i, v.get(i) + 1);
     }
@@ -26,8 +30,12 @@ public final class DsVector {
    *
    * @param v the ArrayList to be searched
    * @return An ArrayList of all indices where n was found
+   * @throws NullPointerException if v is null
    */
   public static ArrayList<Integer> searchVector(ArrayList<Integer> v, int n) {
+    if (v == null) {
+      throw new NullPointerException("ArrayList cannot be null");
+    }
     ArrayList<Integer> indices = new ArrayList<Integer>();
     for (int i = 0; i < v.size(); i++) {
       if (v.get(i) == n) {
@@ -42,8 +50,12 @@ public final class DsVector {
    *
    * @param v the ArrayList to be sorted
    * @return the sorted ArrayList
+   * @throws NullPointerException if v is null
    */
   public static ArrayList<Integer> sortVector(ArrayList<Integer> v) {
+    if (v == null) {
+      throw new NullPointerException("ArrayList cannot be null");
+    }
     ArrayList<Integer> ret = new ArrayList<Integer>(v);
     Collections.sort(ret);
     return ret;
@@ -54,8 +66,12 @@ public final class DsVector {
    *
    * @param v the ArrayList to be reversed
    * @return the reversed ArrayList
+   * @throws NullPointerException if v is null
    */
   public static ArrayList<Integer> reverseVector(ArrayList<Integer> v) {
+    if (v == null) {
+      throw new NullPointerException("ArrayList cannot be null");
+    }
     ArrayList<Integer> ret = new ArrayList<Integer>();
 
     for (int i = v.size() - 1; i >= 0; i--) {
@@ -70,8 +86,20 @@ public final class DsVector {
    * @param v the ArrayList to be rotated
    * @param n the number of times to rotate the ArrayList
    * @return the rotated ArrayList
+   * @throws NullPointerException if v is null
+   * @throws IllegalArgumentException if n is negative or n >= size
    */
   public static ArrayList<Integer> rotateVector(ArrayList<Integer> v, int n) {
+    if (v == null) {
+      throw new NullPointerException("ArrayList cannot be null");
+    }
+    if (n < 0) {
+      throw new IllegalArgumentException("Rotation amount cannot be negative, got: " + n);
+    }
+    if (v.size() > 0 && n >= v.size()) {
+      throw new IllegalArgumentException(
+          "Rotation amount must be less than size, got: " + n + " for size: " + v.size());
+    }
     ArrayList<Integer> ret = new ArrayList<Integer>();
 
     for (int i = n; i < v.size(); i++) {
@@ -89,9 +117,16 @@ public final class DsVector {
    * @param v1 the first ArrayList to be merged
    * @param v2 the second ArrayList to be merged
    * @return the merged ArrayList
+   * @throws NullPointerException if v1 or v2 is null
    */
   public static ArrayList<Integer> mergeVectors(ArrayList<Integer> v1,
       ArrayList<Integer> v2) {
+    if (v1 == null) {
+      throw new NullPointerException("First ArrayList cannot be null");
+    }
+    if (v2 == null) {
+      throw new NullPointerException("Second ArrayList cannot be null");
+    }
     ArrayList<Integer> ret = new ArrayList<Integer>();
 
     for (int i = 0; i < v1.size(); i++) {

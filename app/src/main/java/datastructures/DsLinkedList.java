@@ -13,8 +13,12 @@ public final class DsLinkedList {
    *
    * @param l the linked list to be shuffled
    * @return the shuffled linked list
+   * @throws NullPointerException if l is null
    */
   public static LinkedList<Integer> shuffle(LinkedList<Integer> l) {
+    if (l == null) {
+      throw new NullPointerException("LinkedList cannot be null");
+    }
     ArrayList<Integer> tmp = new ArrayList<>(l);
     Collections.shuffle(tmp);
     return new LinkedList<>(tmp);
@@ -27,9 +31,26 @@ public final class DsLinkedList {
    * @param start the starting index of the slice
    * @param end   the ending index of the slice (exclusive)
    * @return the sliced linked list
+   * @throws NullPointerException if l is null
+   * @throws IndexOutOfBoundsException if start or end are out of bounds
    */
   public static LinkedList<Integer> slice(LinkedList<Integer> l, int start,
       int end) {
+    if (l == null) {
+      throw new NullPointerException("LinkedList cannot be null");
+    }
+    if (start < 0 || start > l.size()) {
+      throw new IndexOutOfBoundsException(
+          "Start index out of bounds: " + start + " for size: " + l.size());
+    }
+    if (end < 0 || end > l.size()) {
+      throw new IndexOutOfBoundsException(
+          "End index out of bounds: " + end + " for size: " + l.size());
+    }
+    if (start > end) {
+      throw new IndexOutOfBoundsException(
+          "Start index (" + start + ") cannot be greater than end index (" + end + ")");
+    }
     return new LinkedList<>(l.subList(start, end));
   }
 }

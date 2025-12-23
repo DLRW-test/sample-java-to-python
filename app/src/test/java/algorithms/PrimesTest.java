@@ -2,6 +2,7 @@ package algorithms;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -82,6 +83,20 @@ public class PrimesTest {
   class SumPrimesTests {
 
     @Test
+    @DisplayName("Exception: negative input should throw IllegalArgumentException")
+    public void testSumPrimesNegative() {
+      IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        Primes.sumPrimes(-1);
+      }, "sumPrimes(-1) should throw IllegalArgumentException");
+      assertTrue(exception.getMessage().contains("negative"), "Exception message should mention 'negative'");
+      
+      exception = assertThrows(IllegalArgumentException.class, () -> {
+        Primes.sumPrimes(-10);
+      }, "sumPrimes(-10) should throw IllegalArgumentException");
+      assertTrue(exception.getMessage().contains("negative"), "Exception message should mention 'negative'");
+    }
+
+    @Test
     @DisplayName("Edge case: n=0 should return 0")
     public void testSumPrimesZero() {
       assertEquals(0, Primes.sumPrimes(0), "SumPrimes(0) should return 0");
@@ -143,6 +158,25 @@ public class PrimesTest {
   @Nested
   @DisplayName("PrimeFactors(int n) tests")
   class PrimeFactorsTests {
+
+    @Test
+    @DisplayName("Exception: n <= 0 should throw IllegalArgumentException")
+    public void testPrimeFactorsInvalid() {
+      IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        Primes.primeFactors(0);
+      }, "primeFactors(0) should throw IllegalArgumentException");
+      assertTrue(exception.getMessage().contains("positive"), "Exception message should mention 'positive'");
+      
+      exception = assertThrows(IllegalArgumentException.class, () -> {
+        Primes.primeFactors(-1);
+      }, "primeFactors(-1) should throw IllegalArgumentException");
+      assertTrue(exception.getMessage().contains("positive"), "Exception message should mention 'positive'");
+      
+      exception = assertThrows(IllegalArgumentException.class, () -> {
+        Primes.primeFactors(-10);
+      }, "primeFactors(-10) should throw IllegalArgumentException");
+      assertTrue(exception.getMessage().contains("positive"), "Exception message should mention 'positive'");
+    }
 
     @Test
     @DisplayName("Edge case: n=1 should return empty list")
@@ -241,13 +275,17 @@ public class PrimesTest {
   class GenerateSieveTests {
 
     @Test
-    @DisplayName("Edge case: negative input should return empty array")
+    @DisplayName("Exception: negative input should throw IllegalArgumentException")
     public void testGenerateSieveNegative() {
-      boolean[] sieve = Primes.generateSieve(-1);
-      assertEquals(0, sieve.length, "generateSieve(-1) should return empty array");
+      IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        Primes.generateSieve(-1);
+      }, "generateSieve(-1) should throw IllegalArgumentException");
+      assertTrue(exception.getMessage().contains("negative"), "Exception message should mention 'negative'");
       
-      sieve = Primes.generateSieve(-10);
-      assertEquals(0, sieve.length, "generateSieve(-10) should return empty array");
+      exception = assertThrows(IllegalArgumentException.class, () -> {
+        Primes.generateSieve(-10);
+      }, "generateSieve(-10) should throw IllegalArgumentException");
+      assertTrue(exception.getMessage().contains("negative"), "Exception message should mention 'negative'");
     }
 
     @Test
@@ -330,13 +368,17 @@ public class PrimesTest {
   class GetAllPrimesUpToTests {
 
     @Test
-    @DisplayName("Edge case: negative input should return empty list")
+    @DisplayName("Exception: negative input should throw IllegalArgumentException")
     public void testGetAllPrimesUpToNegative() {
-      ArrayList<Integer> primes = Primes.getAllPrimesUpTo(-5);
-      assertEquals(0, primes.size(), "getAllPrimesUpTo(-5) should return empty list");
+      IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        Primes.getAllPrimesUpTo(-5);
+      }, "getAllPrimesUpTo(-5) should throw IllegalArgumentException");
+      assertTrue(exception.getMessage().contains("negative"), "Exception message should mention 'negative'");
       
-      primes = Primes.getAllPrimesUpTo(-100);
-      assertEquals(0, primes.size(), "getAllPrimesUpTo(-100) should return empty list");
+      exception = assertThrows(IllegalArgumentException.class, () -> {
+        Primes.getAllPrimesUpTo(-100);
+      }, "getAllPrimesUpTo(-100) should throw IllegalArgumentException");
+      assertTrue(exception.getMessage().contains("negative"), "Exception message should mention 'negative'");
     }
 
     @Test
@@ -414,11 +456,22 @@ public class PrimesTest {
   class SumPrimesUsingSieveTests {
 
     @Test
-    @DisplayName("Edge case: negative input should return 0")
+    @DisplayName("Exception: negative input should throw IllegalArgumentException")
     public void testSumPrimesUsingSieveNegative() {
-      assertEquals(0, Primes.sumPrimesUsingSieve(-10), "sumPrimesUsingSieve(-10) should return 0");
-      assertEquals(0, Primes.sumPrimesUsingSieve(-1), "sumPrimesUsingSieve(-1) should return 0");
-      assertEquals(0, Primes.sumPrimesUsingSieve(-100), "sumPrimesUsingSieve(-100) should return 0");
+      IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        Primes.sumPrimesUsingSieve(-10);
+      }, "sumPrimesUsingSieve(-10) should throw IllegalArgumentException");
+      assertTrue(exception.getMessage().contains("negative"), "Exception message should mention 'negative'");
+      
+      exception = assertThrows(IllegalArgumentException.class, () -> {
+        Primes.sumPrimesUsingSieve(-1);
+      }, "sumPrimesUsingSieve(-1) should throw IllegalArgumentException");
+      assertTrue(exception.getMessage().contains("negative"), "Exception message should mention 'negative'");
+      
+      exception = assertThrows(IllegalArgumentException.class, () -> {
+        Primes.sumPrimesUsingSieve(-100);
+      }, "sumPrimesUsingSieve(-100) should throw IllegalArgumentException");
+      assertTrue(exception.getMessage().contains("negative"), "Exception message should mention 'negative'");
     }
 
     @Test

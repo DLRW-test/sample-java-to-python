@@ -11,8 +11,12 @@ public final class Single {
    *
    * @param n The number of natural numbers to sum.
    * @return The sum of the first n natural numbers.
+   * @throws IllegalArgumentException if n is negative
    */
   public static int sumRange(int n) {
+    if (n < 0) {
+      throw new IllegalArgumentException("n must be non-negative, got: " + n);
+    }
     return n * (n - 1) / 2;
   }
 
@@ -21,8 +25,16 @@ public final class Single {
    *
    * @param arr The array of integers.
    * @return The maximum value in the array.
+   * @throws NullPointerException if arr is null
+   * @throws IllegalArgumentException if arr is empty
    */
   public static int maxArray(int[] arr) {
+    if (arr == null) {
+      throw new NullPointerException("Array cannot be null");
+    }
+    if (arr.length == 0) {
+      throw new IllegalArgumentException("Array cannot be empty");
+    }
     int max = arr[0];
     for (int i : arr) {
       if (i > max) {
@@ -38,8 +50,12 @@ public final class Single {
    * @param n The number of natural numbers to sum.
    * @param m The modulus.
    * @return The sum of the first n natural numbers, modulo m.
+   * @throws IllegalArgumentException if m is zero or negative
    */
   public static int sumModulus(int n, int m) {
+    if (m <= 0) {
+      throw new IllegalArgumentException("Modulus must be positive, got: " + m);
+    }
     int k = (n - 1) / m;
     return m * k * (k + 1) / 2;
   }

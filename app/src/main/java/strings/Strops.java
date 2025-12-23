@@ -6,8 +6,12 @@ public class Strops {
    *
    * @param str The string to reverse.
    * @return The reversed string.
+   * @throws NullPointerException if str is null
    */
   public String reverse(String str) {
+    if (str == null) {
+      throw new NullPointerException("String cannot be null");
+    }
     return new StringBuilder(str).reverse().toString();
   }
 
@@ -16,8 +20,12 @@ public class Strops {
    *
    * @param str The string to check.
    * @return True if the string is a palindrome, false otherwise.
+   * @throws NullPointerException if str is null
    */
   public boolean isPalindrome(String str) {
+    if (str == null) {
+      throw new NullPointerException("String cannot be null");
+    }
     if (str.length() == 0) {
       return true;
     }
