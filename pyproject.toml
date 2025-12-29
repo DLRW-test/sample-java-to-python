@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sample_project"
+version = "0.1.0"
+description = "A sample Python project showcasing algorithms, data structures, control flow, and string manipulation implementations"
+requires-python = ">=3.10"
+authors = [
+    { name = "Sample Author", email = "author@example.com" }
+]
+license = { text = "MIT" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
