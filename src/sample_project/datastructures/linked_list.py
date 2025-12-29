@@ -28,8 +28,8 @@ def shuffle(linked_list: deque[int]) -> deque[int]:
     Raises:
         TypeError: If linked_list is None.
 
-    Complexity:
-        O(n) time, O(n) space
+    Note:
+        Time complexity: O(n), Space complexity: O(n)
     """
     if linked_list is None:
         raise TypeError("LinkedList cannot be None")
@@ -59,8 +59,8 @@ def slice(linked_list: deque[int], start: int, end: int) -> deque[int]:
         IndexError: If start or end are out of bounds.
         ValueError: If start is greater than end.
 
-    Complexity:
-        O(n) time, O(k) space where k is the slice size
+    Note:
+        Time complexity: O(n), Space complexity: O(k) where k is the slice size
     """
     if linked_list is None:
         raise TypeError("LinkedList cannot be None")

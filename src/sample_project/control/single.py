@@ -21,8 +21,8 @@ def sum_range(n: int) -> int:
     Raises:
         ValueError: If n is negative.
 
-    Complexity:
-        O(n) time, O(1) space
+    Note:
+        Time complexity: O(n), Space complexity: O(1)
     """
     if n < 0:
         raise ValueError(f"n must be non-negative, got: {n}")
@@ -45,8 +45,8 @@ def max_array(array: list[int]) -> int:
         TypeError: If array is None.
         ValueError: If array is empty.
 
-    Complexity:
-        O(n) time, O(1) space
+    Note:
+        Time complexity: O(n), Space complexity: O(1)
     """
     if array is None:
         raise TypeError("Array cannot be None")
@@ -75,8 +75,8 @@ def sum_modulus(n: int, m: int) -> int:
     Raises:
         ValueError: If n is negative or m is zero or negative.
 
-    Complexity:
-        O(n²) time, O(1) space
+    Note:
+        Time complexity: O(n²), Space complexity: O(1)
     """
     if n < 0:
         raise ValueError(f"n must be non-negative, got: {n}")

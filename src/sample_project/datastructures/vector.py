@@ -21,8 +21,8 @@ def modify_vector(vector: list[int]) -> list[int]:
     Raises:
         TypeError: If vector is None.
 
-    Complexity:
-        O(n) time, O(1) space where n is the length of the list.
+    Note:
+        Time complexity: O(n), Space complexity: O(1) where n is the length of the list.
 
     Examples:
         >>> modify_vector([1, 2, 3])
@@ -54,9 +54,8 @@ def search_vector(vector: list[int], value: int) -> list[int]:
     Raises:
         TypeError: If vector is None.
 
-    Complexity:
-        O(n) time, O(k) space where n is the length of the list and k is the
-        number of matches.
+    Note:
+        Time complexity: O(n), Space complexity: O(k) where n is the length of the list and k is the number of matches.
 
     Examples:
         >>> search_vector([1, 2, 3, 2, 4], 2)
@@ -88,8 +87,8 @@ def sort_vector(vector: list[int]) -> list[int]:
     Raises:
         TypeError: If vector is None.
 
-    Complexity:
-        O(n log n) time, O(n) space where n is the length of the list.
+    Note:
+        Time complexity: O(n log n), Space complexity: O(n) where n is the length of the list.
 
     Examples:
         >>> sort_vector([3, 1, 4, 1, 5])
@@ -117,8 +116,8 @@ def reverse_vector(vector: list[int]) -> list[int]:
     Raises:
         TypeError: If vector is None.
 
-    Complexity:
-        O(n) time, O(n) space where n is the length of the list.
+    Note:
+        Time complexity: O(n), Space complexity: O(n) where n is the length of the list.
 
     Examples:
         >>> reverse_vector([1, 2, 3, 4, 5])
@@ -154,8 +153,8 @@ def rotate_vector(vector: list[int], positions: int) -> list[int]:
         ValueError: If positions is negative or if positions >= size of the
             list (when list is non-empty).
 
-    Complexity:
-        O(n) time, O(n) space where n is the length of the list.
+    Note:
+        Time complexity: O(n), Space complexity: O(n) where n is the length of the list.
 
     Examples:
         >>> rotate_vector([1, 2, 3, 4, 5], 2)
@@ -199,9 +198,8 @@ def merge_vectors(vector1: list[int], vector2: list[int]) -> list[int]:
     Raises:
         TypeError: If vector1 or vector2 is None.
 
-    Complexity:
-        O(n + m) time, O(n + m) space where n and m are the lengths of the two
-        lists.
+    Note:
+        Time complexity: O(n + m), Space complexity: O(n + m) where n and m are the lengths of the two lists.
 
     Examples:
         >>> merge_vectors([1, 2, 3], [4, 5, 6])

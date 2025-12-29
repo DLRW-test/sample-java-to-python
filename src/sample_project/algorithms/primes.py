@@ -29,9 +29,9 @@ def generate_sieve(n: int) -> list[bool]:
            - If i is marked as prime, mark all multiples of i (starting from i²) as composite
         4. Return the sieve array
 
-    Complexity:
-        Time Complexity: O(n log log n)
-        Space Complexity: O(n)
+    Note:
+        Time complexity: O(n log log n)
+        Space complexity: O(n)
 
     Memory Requirements:
         - n = 10: ~10 bytes
@@ -94,18 +94,17 @@ def is_prime(n: int) -> bool:
     For repeated primality checks, consider using get_all_primes_up_to()
     to generate the sieve once and reuse it.
 
-    Complexity:
-        Time Complexity: O(n log log n) for sieve generation + O(1) lookup
-        Space Complexity: O(n)
-
-    Memory Usage:
-        Allocates approximately n bytes for the sieve array.
-
     Args:
         n: The number to check.
 
     Returns:
-        True if the number is prime, False otherwise.
+        True if the number is prime, False otherwise. Returns False for
+        numbers less than 2 (including negative numbers).
+
+    Note:
+        Time complexity: O(n log log n) for sieve generation + O(1) lookup
+        Space complexity: O(n)
+        Memory usage: Allocates approximately n bytes for the sieve array.
 
     Examples:
         >>> is_prime(2)
@@ -131,14 +130,6 @@ def sum_primes(n: int) -> int:
     This replaces the previous trial division approach with a single-pass sieve
     generation followed by a summation.
 
-    Complexity:
-        Time Complexity: O(n log log n) for sieve + O(n) for summation = O(n log log n)
-        Space Complexity: O(n)
-        Previous Implementation: O(n * √n) with trial division
-
-    Memory Usage:
-        Allocates approximately n bytes for the sieve array.
-
     Args:
         n: The upper bound (exclusive) - sums all primes less than n.
 
@@ -147,6 +138,12 @@ def sum_primes(n: int) -> int:
 
     Raises:
         ValueError: If n is negative.
+
+    Note:
+        Time complexity: O(n log log n) for sieve + O(n) for summation = O(n log log n)
+        Space complexity: O(n)
+        Memory usage: Allocates approximately n bytes for the sieve array.
+        Previous implementation: O(n * √n) with trial division
 
     Examples:
         >>> sum_primes(10)
@@ -180,14 +177,6 @@ def get_all_primes_up_to(n: int) -> list[int]:
     efficient to call this once and reuse the result than to call is_prime()
     repeatedly.
 
-    Complexity:
-        Time Complexity: O(n log log n) for sieve generation + O(n) for collection
-        Space Complexity: O(n) for sieve + O(π(n)) for result list (where π(n) ≈ n/ln(n))
-
-    Memory Usage:
-        Allocates approximately n bytes for the sieve array plus storage for the
-        returned prime numbers.
-
     Args:
         n: The upper bound (inclusive) for prime generation.
 
@@ -196,6 +185,11 @@ def get_all_primes_up_to(n: int) -> list[int]:
 
     Raises:
         ValueError: If n is negative.
+
+    Note:
+        Time complexity: O(n log log n) for sieve generation + O(n) for collection
+        Space complexity: O(n) for sieve + O(π(n)) for result list (where π(n) ≈ n/ln(n))
+        Memory usage: Allocates approximately n bytes for the sieve array plus storage for the returned prime numbers.
 
     Examples:
         >>> get_all_primes_up_to(10)
@@ -233,14 +227,6 @@ def prime_factors(n: int) -> list[int]:
            - While n is divisible by i, add i to the result and divide n by i
         2. If n > 1 after the loop, n itself is a prime factor
 
-    Complexity:
-        Time Complexity: O(√n) in the worst case (when n is prime)
-        Space Complexity: O(log n) for the result list
-
-    Note:
-        For factoring multiple numbers, consider pre-generating a sieve of primes
-        up to √(max_n) and using those as trial divisors for improved performance.
-
     Args:
         n: The number to find the prime factors of.
 
@@ -249,6 +235,12 @@ def prime_factors(n: int) -> list[int]:
 
     Raises:
         ValueError: If n is less than or equal to 0.
+
+    Note:
+        Time complexity: O(√n) in the worst case (when n is prime)
+        Space complexity: O(log n) for the result list
+        For factoring multiple numbers, consider pre-generating a sieve of primes
+        up to √(max_n) and using those as trial divisors for improved performance.
 
     Examples:
         >>> prime_factors(12)
@@ -286,16 +278,6 @@ def sum_primes_using_sieve(n: int) -> int:
     This method uses the same sieve algorithm as sum_primes() and produces identical
     results. Both methods have the same time and space complexity.
 
-    Algorithm: Sieve of Eratosthenes
-        Time complexity: O(n log log n)
-        Space complexity: O(n)
-
-    Performance comparison:
-        - sum_primes(): O(n log log n) - returns int
-        - sum_primes_using_sieve(): O(n log log n) - returns int
-
-    For large n (e.g., n=1,000,000), both methods have similar performance.
-
     Args:
         n: The upper limit (exclusive) for prime summation.
 
@@ -304,6 +286,13 @@ def sum_primes_using_sieve(n: int) -> int:
 
     Raises:
         ValueError: If n is negative.
+
+    Note:
+        Time complexity: O(n log log n) (Sieve of Eratosthenes)
+        Space complexity: O(n)
+        Performance comparison: sum_primes() and sum_primes_using_sieve() have
+        identical performance and return int. For large n (e.g., n=1,000,000),
+        both methods have similar performance.
 
     Examples:
         >>> sum_primes_using_sieve(10)

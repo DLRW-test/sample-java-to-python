@@ -12,7 +12,7 @@ class Strops:
     including reversal and palindrome detection. Operations are case-sensitive
     and whitespace-sensitive.
 
-    Example:
+    Examples:
         >>> strops = Strops()
         >>> strops.reverse("hello")
         'olleh'
@@ -42,7 +42,7 @@ class Strops:
             Time complexity: O(n) where n is the length of the string.
             Space complexity: O(n) for the reversed string.
 
-        Example:
+        Examples:
             >>> strops = Strops()
             >>> strops.reverse("hello")
             'olleh'
@@ -75,7 +75,7 @@ class Strops:
             Time complexity: O(n) where n is the length of the string.
             Space complexity: O(n) for the reversed string comparison.
 
-        Example:
+        Examples:
             >>> strops = Strops()
             >>> strops.is_palindrome("racecar")
             True
