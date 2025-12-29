@@ -27,10 +27,11 @@ def generate_vector(size: int, min_val: int, max_val: int) -> list[int]:
         ValueError: If size is negative (size < 0).
         ValueError: If min_val is greater than max_val.
 
-    Complexity:
-        O(n) where n is the size parameter, as we generate n random integers.
+    Note:
+        Time complexity: O(n), Space complexity: O(n) where n is the size parameter,
+        as we generate n random integers.
 
-    Example:
+    Examples:
         >>> vec = generate_vector(5, 0, 10)
         >>> len(vec)
         5

@@ -27,7 +27,7 @@ def sort_vector(data: list[int]) -> list[int]:
         Time complexity: O(n log n) where n is the length of the list.
         Space complexity: O(n) for the new sorted list.
 
-    Example:
+    Examples:
         >>> sort_vector([3, 1, 4, 1, 5, 9, 2, 6])
         [1, 1, 2, 3, 4, 5, 6, 9]
         >>> sort_vector([5, 2, 8, 1])
@@ -67,7 +67,7 @@ def dutch_flag_partition(arr: list[int], pivot: int) -> list[int]:
         Time complexity: O(n) where n is the length of the list (two passes).
         Space complexity: O(n) for the new partitioned list.
 
-    Example:
+    Examples:
         >>> dutch_flag_partition([3, 5, 2, 6, 8, 1, 0, 5, 5], 5)
         [3, 2, 1, 0, 5, 5, 5, 6, 8]
         >>> dutch_flag_partition([1, 0, 2, 1, 0, 2, 1], 1)
@@ -119,7 +119,7 @@ def max_n(data: list[int], n: int) -> list[int]:
             number of elements to return.
         Space complexity: O(k) for the heap.
 
-    Example:
+    Examples:
         >>> max_n([3, 1, 4, 1, 5, 9, 2, 6], 3)
         [9, 6, 5]
         >>> max_n([10, 20, 30, 40, 50], 2)

@@ -18,6 +18,9 @@ def single() -> None:
     
     Shows examples of sum_range, max_array, and sum_modulus functions
     from the control.single module.
+    
+    Returns:
+        None.
     """
     try:
         print("SingleForLoop")
@@ -36,6 +39,9 @@ def double_() -> None:
     
     Shows examples of sum_square, sum_triangle, count_pairs, and count_duplicates
     functions from the control.double module. Named double_ to avoid Python keyword.
+    
+    Returns:
+        None.
     """
     try:
         print("DoubleForLoop")
@@ -55,6 +61,9 @@ def vector() -> None:
     
     Shows examples of modify_vector, search_vector, sort_vector, reverse_vector,
     rotate_vector, and merge_vectors functions from the datastructures.vector module.
+    
+    Returns:
+        None.
     """
     try:
         input_vec = vector_gen.generate_vector(10, 0, 9)
@@ -80,6 +89,9 @@ def primes() -> None:
     
     Shows examples of is_prime, sum_primes, and prime_factors functions
     from the algorithms.primes module.
+    
+    Returns:
+        None.
     """
     try:
         print("Primes")
@@ -98,6 +110,9 @@ def sort() -> None:
     
     Shows examples of sort_vector, dutch_flag_partition, and max_n functions
     from the algorithms.sort module.
+    
+    Returns:
+        None.
     """
     try:
         initial_vec = vector_gen.generate_vector(20, 0, 9)
@@ -129,6 +144,9 @@ def main() -> None:
     
     The function handles exceptions and exits with status code 1 if any
     errors occur during execution.
+    
+    Returns:
+        None.
     """
     try:
         single()
