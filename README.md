@@ -242,6 +242,21 @@ SumSquare(10): 2025
 
 The project uses `pytest` for testing with comprehensive coverage reporting.
 
+### Installation Testing
+
+Before running the test suite, verify the package installs correctly:
+
+```bash
+# Run automated installation test
+chmod +x test_installation.sh
+./test_installation.sh
+
+# Or validate CLI output manually
+python validate_cli_output.py
+```
+
+See **[INSTALLATION_TEST.md](INSTALLATION_TEST.md)** for detailed installation testing documentation.
+
 ### Run All Tests
 
 ```bash
