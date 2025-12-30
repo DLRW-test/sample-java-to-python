@@ -175,19 +175,22 @@ class TestPrimeFactors:
         """Composite input: n=12 should return [2, 2, 3]"""
         # 12 = 2 * 2 * 3
         expected = [2, 2, 3]
-        assert prime_factors(12) == expected, "prime_factors(12) should return [2, 2, 3]"
+        msg = "prime_factors(12) should return [2, 2, 3]"
+        assert prime_factors(12) == expected, msg
 
     def test_prime_factors_eighteen(self):
         """Composite input: n=18 should return [2, 3, 3]"""
         # 18 = 2 * 3 * 3
         expected = [2, 3, 3]
-        assert prime_factors(18) == expected, "prime_factors(18) should return [2, 3, 3]"
+        msg = "prime_factors(18) should return [2, 3, 3]"
+        assert prime_factors(18) == expected, msg
 
     def test_prime_factors_twenty_four(self):
         """Composite input: n=24 should return [2, 2, 2, 3]"""
         # 24 = 2 * 2 * 2 * 3
         expected = [2, 2, 2, 3]
-        assert prime_factors(24) == expected, "prime_factors(24) should return [2, 2, 2, 3]"
+        msg = "prime_factors(24) should return [2, 2, 2, 3]"
+        assert prime_factors(24) == expected, msg
 
     def test_prime_factors_four(self):
         """Perfect square: n=4 should return [2, 2]"""
@@ -205,13 +208,15 @@ class TestPrimeFactors:
         """Perfect square: n=16 should return [2, 2, 2, 2]"""
         # 16 = 2 * 2 * 2 * 2
         expected = [2, 2, 2, 2]
-        assert prime_factors(16) == expected, "prime_factors(16) should return [2, 2, 2, 2]"
+        msg = "prime_factors(16) should return [2, 2, 2, 2]"
+        assert prime_factors(16) == expected, msg
 
     def test_prime_factors_thirty(self):
         """Composite with larger factors: n=30 should return [2, 3, 5]"""
         # 30 = 2 * 3 * 5
         expected = [2, 3, 5]
-        assert prime_factors(30) == expected, "prime_factors(30) should return [2, 3, 5]"
+        msg = "prime_factors(30) should return [2, 3, 5]"
+        assert prime_factors(30) == expected, msg
 
 
 # ============================================================================
@@ -318,17 +323,20 @@ class TestGetAllPrimesUpTo:
     def test_get_all_primes_up_to_two(self):
         """Edge case: n=2 should return [2]"""
         expected = [2]
-        assert get_all_primes_up_to(2) == expected, "get_all_primes_up_to(2) should return [2]"
+        msg = "get_all_primes_up_to(2) should return [2]"
+        assert get_all_primes_up_to(2) == expected, msg
 
     def test_get_all_primes_up_to_ten(self):
         """n=10 should return [2, 3, 5, 7]"""
         expected = [2, 3, 5, 7]
-        assert get_all_primes_up_to(10) == expected, "get_all_primes_up_to(10) should return [2, 3, 5, 7]"
+        msg = "get_all_primes_up_to(10) should return [2, 3, 5, 7]"
+        assert get_all_primes_up_to(10) == expected, msg
 
     def test_get_all_primes_up_to_twenty(self):
         """n=20 should return correct primes"""
         expected = [2, 3, 5, 7, 11, 13, 17, 19]
-        assert get_all_primes_up_to(20) == expected, "get_all_primes_up_to(20) should return all primes up to 20"
+        msg = "get_all_primes_up_to(20) should return all primes up to 20"
+        assert get_all_primes_up_to(20) == expected, msg
 
     def test_get_all_primes_up_to_thirty(self):
         """n=30 should return 10 primes"""
@@ -352,7 +360,11 @@ class TestGetAllPrimesUpTo:
 
         # Every number returned should pass is_prime check
         for prime in primes:
-            assert is_prime(prime), f"{prime} returned by get_all_primes_up_to should pass is_prime check"
+            msg = (
+                f"{prime} returned by get_all_primes_up_to should pass "
+                "is_prime check"
+            )
+            assert is_prime(prime), msg
 
         # Verify count matches expected (15 primes up to 50)
         assert len(primes) == 15, "There should be 15 primes up to 50"
@@ -408,21 +420,24 @@ class TestSumPrimesUsingSieve:
         n = 12
         sieve_result = sum_primes_using_sieve(n)
         original_result = sum_primes(n)
-        assert sieve_result == original_result, f"sum_primes_using_sieve({n}) should match sum_primes({n})"
+        msg = f"sum_primes_using_sieve({n}) should match sum_primes({n})"
+        assert sieve_result == original_result, msg
 
     def test_sum_primes_using_sieve_matches_sum_primes_hundred(self):
         """Verify sum_primes_using_sieve matches sum_primes for n=100"""
         n = 100
         sieve_result = sum_primes_using_sieve(n)
         original_result = sum_primes(n)
-        assert sieve_result == original_result, f"sum_primes_using_sieve({n}) should match sum_primes({n})"
+        msg = f"sum_primes_using_sieve({n}) should match sum_primes({n})"
+        assert sieve_result == original_result, msg
 
     def test_sum_primes_using_sieve_matches_sum_primes_thousand(self):
         """Verify sum_primes_using_sieve matches sum_primes for n=1000"""
         n = 1000
         sieve_result = sum_primes_using_sieve(n)
         original_result = sum_primes(n)
-        assert sieve_result == original_result, f"sum_primes_using_sieve({n}) should match sum_primes({n})"
+        msg = f"sum_primes_using_sieve({n}) should match sum_primes({n})"
+        assert sieve_result == original_result, msg
 
     def test_sum_primes_using_sieve_ten_thousand(self):
         """Large n=10000 should compute correctly"""
@@ -440,7 +455,7 @@ class TestPerformance:
     """Performance tests for prime algorithms."""
 
     def test_performance_comparison(self):
-        """Performance comparison: sum_primes vs sum_primes_using_sieve for n=100000"""
+        """Performance comparison: sum_primes vs sum_primes_using_sieve."""
         import time
 
         n = 100000
@@ -491,7 +506,8 @@ class TestPerformance:
         print(f"Expected: 78498 primes up to 1,000,000")
 
         # Verify count (there are 78,498 primes below 1,000,000)
-        assert len(primes) == 78498, "There should be 78,498 primes up to 1,000,000"
+        msg = "There should be 78,498 primes up to 1,000,000"
+        assert len(primes) == 78498, msg
 
         # Verify first and last primes
         assert primes[0] == 2, "First prime should be 2"
@@ -515,4 +531,5 @@ class TestPerformance:
         print(f"Expected: 37,550,402,023")
 
         # Verify result (sum of primes less than 1,000,000 is 37,550,402,023)
-        assert sum_val == 37550402023, "Sum of primes less than 1,000,000 should be 37,550,402,023"
+        msg = "Sum of primes less than 1,000,000 should be 37,550,402,023"
+        assert sum_val == 37550402023, msg

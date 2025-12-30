@@ -55,7 +55,8 @@ def search_vector(vector: list[int], value: int) -> list[int]:
         TypeError: If vector is None.
 
     Note:
-        Time complexity: O(n), Space complexity: O(k) where n is the length of the list and k is the number of matches.
+        Time complexity: O(n), Space complexity: O(k) where n is the length
+            of the list and k is the number of matches.
 
     Examples:
         >>> search_vector([1, 2, 3, 2, 4], 2)
@@ -88,7 +89,8 @@ def sort_vector(vector: list[int]) -> list[int]:
         TypeError: If vector is None.
 
     Note:
-        Time complexity: O(n log n), Space complexity: O(n) where n is the length of the list.
+        Time complexity: O(n log n), Space complexity: O(n) where n is
+            the length of the list.
 
     Examples:
         >>> sort_vector([3, 1, 4, 1, 5])
@@ -117,7 +119,8 @@ def reverse_vector(vector: list[int]) -> list[int]:
         TypeError: If vector is None.
 
     Note:
-        Time complexity: O(n), Space complexity: O(n) where n is the length of the list.
+        Time complexity: O(n), Space complexity: O(n) where n is the
+            length of the list.
 
     Examples:
         >>> reverse_vector([1, 2, 3, 4, 5])
@@ -170,7 +173,8 @@ def rotate_vector(vector: list[int], positions: int) -> list[int]:
         raise ValueError(f"Rotation amount cannot be negative, got: {positions}")
     if len(vector) > 0 and positions >= len(vector):
         raise ValueError(
-            f"Rotation amount must be less than size, got: {positions} for size: {len(vector)}"
+            f"Rotation amount must be less than size, "
+            f"got: {positions} for size: {len(vector)}"
         )
     
     result: list[int] = []
@@ -199,7 +203,8 @@ def merge_vectors(vector1: list[int], vector2: list[int]) -> list[int]:
         TypeError: If vector1 or vector2 is None.
 
     Note:
-        Time complexity: O(n + m), Space complexity: O(n + m) where n and m are the lengths of the two lists.
+        Time complexity: O(n + m), Space complexity: O(n + m) where n and
+            m are the lengths of the two lists.
 
     Examples:
         >>> merge_vectors([1, 2, 3], [4, 5, 6])

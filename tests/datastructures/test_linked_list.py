@@ -51,7 +51,8 @@ class TestShuffle:
         for value in lst:
             original_count = lst.count(value)
             result_count = result.count(value)
-            assert original_count == result_count, f"Element {value} should appear same number of times"
+            msg = f"Element {value} should appear same number of times"
+            assert original_count == result_count, msg
 
         assert result is not lst  # Should return a new list
 
@@ -85,22 +86,27 @@ class TestShuffle:
                 position_value_counts[pos][value] += 1
 
         # Statistical check: for a truly random shuffle with 100 iterations,
-        # each value should appear at each position at least once (with very high probability)
-        # We'll check that at least some positions have seen multiple different values
+        # each value should appear at each position at least once
+        # (with very high probability).
+        # We'll check that at least some positions have seen multiple different
+        # values
         positions_with_variety = 0
         for pos in range(5):
             different_values_seen = 0
             for value in range(1, 6):
                 if position_value_counts[pos][value] > 0:
                     different_values_seen += 1
-            if different_values_seen >= 3:  # Position has seen at least 3 different values
+            # Position has seen at least 3 different values
+            if different_values_seen >= 3:
                 positions_with_variety += 1
 
-        # At least 3 out of 5 positions should have variety (seen multiple different values)
-        assert positions_with_variety >= 3, (
+        # At least 3 out of 5 positions should have variety
+        # (seen multiple different values)
+        msg = (
             f"Expected at least 3 positions to show variety in shuffling, "
             f"but only {positions_with_variety} positions did"
         )
+        assert positions_with_variety >= 3, msg
 
     def test_with_duplicates(self):
         """Shuffle with duplicate elements should preserve duplicates."""
@@ -134,8 +140,10 @@ class TestShuffle:
             if found_original and found_reversed:
                 break
 
-        # With 50 iterations, we should see at least one permutation with very high probability
-        assert found_original or found_reversed, "Should find at least one permutation in 50 shuffles"
+        # With 50 iterations, we should see at least one permutation
+        # with very high probability
+        msg = "Should find at least one permutation in 50 shuffles"
+        assert found_original or found_reversed, msg
 
     def test_when_none_raises_type_error(self):
         """None input should raise TypeError."""

@@ -5,12 +5,15 @@ primality testing, and prime factorization. All functions use efficient algorith
 optimized for performance while maintaining clear, readable implementations.
 
 Functions:
-    generate_sieve: Generate a boolean sieve for prime detection using Sieve of Eratosthenes.
+    generate_sieve: Generate a boolean sieve for prime detection using
+        Sieve of Eratosthenes.
     is_prime: Check if a number is prime using sieve lookup.
     sum_primes: Sum all prime numbers less than n.
     get_all_primes_up_to: Get all prime numbers up to and including n.
-    prime_factors: Find all prime factors of a number using trial division.
-    sum_primes_using_sieve: Sum all prime numbers less than n using sieve (returns int).
+    prime_factors: Find all prime factors of a number using trial
+        division.
+    sum_primes_using_sieve: Sum all prime numbers less than n using sieve
+        (returns int).
 """
 
 
@@ -26,7 +29,8 @@ def generate_sieve(n: int) -> list[bool]:
         1. Create a boolean array of size n+1, initially all True
         2. Mark 0 and 1 as not prime (False)
         3. For each number i from 2 to √n:
-           - If i is marked as prime, mark all multiples of i (starting from i²) as composite
+           - If i is marked as prime, mark all multiples of i
+             (starting from i²) as composite
         4. Return the sieve array
 
     Note:
@@ -124,7 +128,9 @@ def is_prime(n: int) -> bool:
 
 
 def sum_primes(n: int) -> int:
-    """Sum all prime numbers from 0 to n (exclusive) using the Sieve of Eratosthenes.
+    """Sum all prime numbers from 0 to n (exclusive).
+
+    Uses the Sieve of Eratosthenes algorithm.
 
     This method generates a sieve up to n-1 and sums all numbers marked as prime.
     This replaces the previous trial division approach with a single-pass sieve
@@ -140,7 +146,8 @@ def sum_primes(n: int) -> int:
         ValueError: If n is negative.
 
     Note:
-        Time complexity: O(n log log n) for sieve + O(n) for summation = O(n log log n)
+        Time complexity: O(n log log n) for sieve + O(n) for summation
+            = O(n log log n)
         Space complexity: O(n)
         Memory usage: Allocates approximately n bytes for the sieve array.
         Previous implementation: O(n * √n) with trial division
@@ -170,7 +177,9 @@ def sum_primes(n: int) -> int:
 
 
 def get_all_primes_up_to(n: int) -> list[int]:
-    """Return all prime numbers up to and including n using the Sieve of Eratosthenes.
+    """Return all prime numbers up to and including n.
+
+    Uses the Sieve of Eratosthenes algorithm.
 
     This utility method exposes the sieve results directly, which is useful when
     you need to perform multiple operations with primes in a range. It's more
@@ -187,9 +196,12 @@ def get_all_primes_up_to(n: int) -> list[int]:
         ValueError: If n is negative.
 
     Note:
-        Time complexity: O(n log log n) for sieve generation + O(n) for collection
-        Space complexity: O(n) for sieve + O(π(n)) for result list (where π(n) ≈ n/ln(n))
-        Memory usage: Allocates approximately n bytes for the sieve array plus storage for the returned prime numbers.
+        Time complexity: O(n log log n) for sieve generation + O(n) for
+            collection
+        Space complexity: O(n) for sieve + O(π(n)) for result list
+            (where π(n) ≈ n/ln(n))
+        Memory usage: Allocates approximately n bytes for the sieve array
+            plus storage for the returned prime numbers.
 
     Examples:
         >>> get_all_primes_up_to(10)
@@ -239,8 +251,9 @@ def prime_factors(n: int) -> list[int]:
     Note:
         Time complexity: O(√n) in the worst case (when n is prime)
         Space complexity: O(log n) for the result list
-        For factoring multiple numbers, consider pre-generating a sieve of primes
-        up to √(max_n) and using those as trial divisors for improved performance.
+        For factoring multiple numbers, consider pre-generating a sieve of
+            primes up to √(max_n) and using those as trial divisors for
+            improved performance.
 
     Examples:
         >>> prime_factors(12)
