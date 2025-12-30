@@ -22,7 +22,8 @@ class TestSortVector:
         """Exception: None list should raise TypeError"""
         with pytest.raises(TypeError) as exc_info:
             sort_vector(None)
-        assert "none" in str(exc_info.value).lower() or "null" in str(exc_info.value).lower()
+        error_msg = str(exc_info.value).lower()
+        assert "none" in error_msg or "null" in error_msg
 
     def test_sort_vector_empty(self):
         """Edge case: empty list should remain empty"""
@@ -91,7 +92,8 @@ class TestDutchFlagPartition:
         """Exception: None list should raise TypeError"""
         with pytest.raises(TypeError) as exc_info:
             dutch_flag_partition(None, 5)
-        assert "none" in str(exc_info.value).lower() or "null" in str(exc_info.value).lower()
+        error_msg = str(exc_info.value).lower()
+        assert "none" in error_msg or "null" in error_msg
 
     def test_dutch_flag_partition_empty(self):
         """Edge case: empty list should remain empty"""
@@ -118,7 +120,8 @@ class TestDutchFlagPartition:
         v = [7]
         dutch_flag_partition(v, 5)
         expected = [7]
-        assert v == expected, "Single element greater than pivot should remain unchanged"
+        msg = "Single element greater than pivot should remain unchanged"
+        assert v == expected, msg
 
     def test_dutch_flag_partition_all_less_than_pivot(self):
         """All elements less than pivot should remain in same relative order"""
@@ -162,12 +165,18 @@ class TestDutchFlagPartition:
         # Verify partitioning: less than pivot, equal to pivot, greater than pivot
         for i in range(len(v)):
             if first_pivot_or_greater != -1 and i < first_pivot_or_greater:
-                assert v[i] < 5, "Elements before pivot section should be less than pivot"
-            if (first_pivot_or_greater != -1 and first_greater_than_pivot != -1 and
-                    i >= first_pivot_or_greater and i < first_greater_than_pivot):
+                msg = "Elements before pivot section should be less than pivot"
+                assert v[i] < 5, msg
+            if (
+                first_pivot_or_greater != -1
+                and first_greater_than_pivot != -1
+                and i >= first_pivot_or_greater
+                and i < first_greater_than_pivot
+            ):
                 assert v[i] == 5, "Elements in middle section should equal pivot"
             if first_greater_than_pivot != -1 and i >= first_greater_than_pivot:
-                assert v[i] > 5, "Elements after pivot section should be greater than pivot"
+                msg = "Elements after pivot section should be greater than pivot"
+                assert v[i] > 5, msg
 
     def test_dutch_flag_partition_no_equal_elements(self):
         """Partition with no elements equal to pivot"""
@@ -184,9 +193,11 @@ class TestDutchFlagPartition:
         # Verify all elements before partition are < pivot and after are > pivot
         for i in range(len(v)):
             if partition_index != -1 and i < partition_index:
-                assert v[i] < 5, "Elements before partition should be less than pivot"
+                msg = "Elements before partition should be less than pivot"
+                assert v[i] < 5, msg
             if partition_index != -1 and i >= partition_index:
-                assert v[i] > 5, "Elements after partition should be greater than pivot"
+                msg = "Elements after partition should be greater than pivot"
+                assert v[i] > 5, msg
 
 
 # ============================================================================
@@ -200,7 +211,8 @@ class TestMaxN:
         """Exception: None list should raise TypeError"""
         with pytest.raises(TypeError) as exc_info:
             max_n(None, 3)
-        assert "none" in str(exc_info.value).lower() or "null" in str(exc_info.value).lower()
+        error_msg = str(exc_info.value).lower()
+        assert "none" in error_msg or "null" in error_msg
 
     def test_max_n_negative(self):
         """Exception: negative n should raise ValueError"""
@@ -249,14 +261,16 @@ class TestMaxN:
         v = [3, 1, 4, 1, 5, 9, 2, 6]
         result = max_n(v, 3)
         expected = [9, 6, 5]
-        assert result == expected, "max_n should return top 3 elements in descending order"
+        msg = "max_n should return top 3 elements in descending order"
+        assert result == expected, msg
 
     def test_max_n_descending_order(self):
         """Result should be sorted in descending order"""
         v = [10, 5, 20, 15, 25]
         result = max_n(v, 4)
         expected = [25, 20, 15, 10]
-        assert result == expected, "max_n result should be sorted in descending order"
+        msg = "max_n result should be sorted in descending order"
+        assert result == expected, msg
 
     def test_max_n_with_duplicates(self):
         """Top n with duplicates should handle correctly"""
@@ -273,7 +287,8 @@ class TestMaxN:
         v = [-5, -1, -10, 3, 0, -2]
         result = max_n(v, 3)
         expected = [3, 0, -1]
-        assert result == expected, "max_n should correctly find top elements from mixed positive/negative"
+        msg = "max_n should correctly find top elements from mixed positive/negative"
+        assert result == expected, msg
 
     def test_max_n_all_identical(self):
         """Top n from list with all identical values"""

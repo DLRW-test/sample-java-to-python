@@ -5,11 +5,12 @@ all library functionality through a series of demo functions.
 """
 
 import sys
-from sample_project.control import single as single_module
-from sample_project.control import double as double_module
-from sample_project.datastructures import vector as vector_module
+
 from sample_project.algorithms import primes as primes_module
 from sample_project.algorithms import sort as sort_module
+from sample_project.control import double as double_module
+from sample_project.control import single as single_module
+from sample_project.datastructures import vector as vector_module
 from sample_project.generator import vector_gen
 
 
@@ -26,7 +27,8 @@ def single() -> None:
         print("SingleForLoop")
         print("-------------")
         print(f"SumRange(10): {single_module.sum_range(10)}")
-        print(f"MaxArray([1, 2, 3, 4, 5]): {single_module.max_array([1, 2, 3, 4, 5])}")
+        arr = [1, 2, 3, 4, 5]
+        print(f"MaxArray({arr}): {single_module.max_array(arr)}")
         print(f"SumModulus(100, 3): {single_module.sum_modulus(100, 3)}")
         print()
     except (ValueError, TypeError) as e:
@@ -48,8 +50,12 @@ def double_() -> None:
         print("-------------")
         print(f"SumSquare(10): {double_module.sum_square(10)}")
         print(f"SumTriangle(10): {double_module.sum_triangle(10)}")
-        print(f"CountPairs([1, 2, 3, 4, 5]): {double_module.count_pairs([1, 2, 3, 4, 5, 2])}")
-        print(f"CountDuplicates([1, 2, 3, 4, 5], [1, 3, 2, 4, 5]): {double_module.count_duplicates([1, 2, 3, 4, 5], [1, 3, 2, 4, 5])}")
+        arr1 = [1, 2, 3, 4, 5, 2]
+        print(f"CountPairs([1, 2, 3, 4, 5]): {double_module.count_pairs(arr1)}")
+        arr2 = [1, 2, 3, 4, 5]
+        arr3 = [1, 3, 2, 4, 5]
+        result = double_module.count_duplicates(arr2, arr3)
+        print(f"CountDuplicates({arr2}, {arr3}): {result}")
         print()
     except (ValueError, TypeError) as e:
         print(f"Error in double loop operations: {e}", file=sys.stderr)
@@ -71,12 +77,18 @@ def vector() -> None:
 
         print("Vector")
         print("------")
-        print(f"ModifyVector({input_vec}): {vector_module.modify_vector(input_vec)}")
-        print(f"SearchVector({input_vec}, 5): {vector_module.search_vector(input_vec, 5)}")
-        print(f"SortVector({input_vec}): {vector_module.sort_vector(input_vec)}")
-        print(f"ReverseVector({input_vec}): {vector_module.reverse_vector(input_vec)}")
-        print(f"RotateVector({input_vec}, 3): {vector_module.rotate_vector(input_vec, 3)}")
-        print(f"MergeVectors({input_vec}, {input_vec2}): {vector_module.merge_vectors(input_vec, input_vec2)}")
+        mod_result = vector_module.modify_vector(input_vec)
+        print(f"ModifyVector({input_vec}): {mod_result}")
+        search_result = vector_module.search_vector(input_vec, 5)
+        print(f"SearchVector({input_vec}, 5): {search_result}")
+        sort_result = vector_module.sort_vector(input_vec)
+        print(f"SortVector({input_vec}): {sort_result}")
+        rev_result = vector_module.reverse_vector(input_vec)
+        print(f"ReverseVector({input_vec}): {rev_result}")
+        rot_result = vector_module.rotate_vector(input_vec, 3)
+        print(f"RotateVector({input_vec}, 3): {rot_result}")
+        merge_result = vector_module.merge_vectors(input_vec, input_vec2)
+        print(f"MergeVectors({input_vec}, {input_vec2}): {merge_result}")
 
         print()
     except (ValueError, TypeError) as e:
@@ -156,9 +168,12 @@ def main() -> None:
         sort()
     except Exception as e:
         print(f"Application error: {e}", file=sys.stderr)
-        print("The application encountered an error and will terminate.", file=sys.stderr)
+        print(
+            "The application encountered an error and will terminate.",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

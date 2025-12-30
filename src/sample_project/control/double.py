@@ -124,7 +124,8 @@ def count_duplicates(arr0: list[int], arr1: list[int]) -> int:
         raise TypeError("Second array cannot be None")
     if len(arr0) != len(arr1):
         raise ValueError(
-            f"Arrays must have equal length, got: {len(arr0)} and {len(arr1)}"
+            f"Arrays must have equal length, "
+            f"got: {len(arr0)} and {len(arr1)}"
         )
 
     # Single-pass comparison
@@ -166,7 +167,8 @@ def sum_matrix(matrix: list[list[int]]) -> int:
             raise TypeError("Matrix row cannot be None")
         if len(matrix[i]) != n:
             raise ValueError(
-                f"Matrix must be square, expected {n} columns but row {i} has {len(matrix[i])}"
+                f"Matrix must be square, expected {n} columns "
+                f"but row {i} has {len(matrix[i])}"
             )
         for j in range(n):
             total += matrix[i][j]

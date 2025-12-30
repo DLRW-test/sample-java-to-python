@@ -146,9 +146,13 @@ def test_generate_vector_randomness_check_elements_vary() -> None:
     result2_equals_result3 = result2 == result3
     result1_equals_result3 = result1 == result3
     
-    assert not (result1_equals_result2 and result2_equals_result3 and result1_equals_result3), (
-        "Multiple random vectors should not all be identical (randomness check)"
+    all_equal = (
+        result1_equals_result2
+        and result2_equals_result3
+        and result1_equals_result3
     )
+    msg = "Multiple random vectors should not all be identical (randomness check)"
+    assert not all_equal, msg
 
 
 def test_generate_vector_randomness_check_not_all_same_value() -> None:

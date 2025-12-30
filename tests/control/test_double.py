@@ -87,7 +87,7 @@ def test_count_duplicates_when_second_array_null_throws_type_error():
 
 
 def test_count_duplicates_when_length_mismatch_throws_value_error():
-    """Test that count_duplicates raises ValueError when arrays have different lengths."""
+    """Test count_duplicates raises ValueError when arrays differ in length."""
     with pytest.raises(ValueError):
         count_duplicates([1, 2], [1, 2, 3])
 
