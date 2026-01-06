@@ -10,7 +10,7 @@ The installation testing validates:
 - ✅ Dependency resolution
 - ✅ Module import resolution
 - ✅ CLI entry point execution (`python -m sample_project.app`)
-- ✅ Console output validation against Java version's demo behavior
+- ✅ Console output validation against expected demo behavior
 
 ## Quick Start
 
@@ -80,7 +80,7 @@ Step 5: Installing package in editable mode...
 **What it does**:
 1. Executes `python -m sample_project.app`
 2. Captures stdout and stderr
-3. Validates output against expected patterns from Java version
+3. Validates output against expected patterns
 4. Generates a detailed validation report
 
 **Usage**:
@@ -321,22 +321,22 @@ The CLI entry point (`app.py`) executes these demo functions in sequence:
 3. Verify function implementations match expected behavior
 4. Note: Vector/Sort sections use random data, so exact values will vary
 
-## Comparison with Java Version
+## Expected Output Values
 
-The Python implementation should produce functionally equivalent output to the Java version:
+The Python implementation produces the following expected outputs:
 
-| Section | Java Output | Python Output | Notes |
-|---------|-------------|---------------|-------|
-| SumRange(10) | 45 | 45 | Identical |
-| MaxArray([1,2,3,4,5]) | 5 | 5 | Identical |
-| SumModulus(100, 3) | 1683 | 1683 | Identical |
-| SumSquare(10) | 2025 | 2025 | Identical |
-| SumTriangle(10) | 165 | 165 | Identical |
-| IsPrime(10) | false | False | Python boolean |
-| SumPrimes(10) | 17 | 17 | Identical |
-| PrimeFactors(10) | [2, 5] | [2, 5] | Identical |
-| Vector operations | Random | Random | Values differ, behavior same |
-| Sort operations | Random | Random | Values differ, behavior same |
+| Section | Function | Expected Output | Notes |
+|---------|----------|----------------|-------|
+| SumRange(10) | sum_range(10) | 45 | Sum of integers 0-9 |
+| MaxArray([1,2,3,4,5]) | max_array([1,2,3,4,5]) | 5 | Maximum value |
+| SumModulus(100, 3) | sum_modulus(100, 3) | 1683 | Sum of multiples of 3 < 100 |
+| SumSquare(10) | sum_square(10) | 2025 | Sum of i*j for i,j in [1,10) |
+| SumTriangle(10) | sum_triangle(10) | 165 | Sum where j <= i |
+| IsPrime(10) | is_prime(10) | False | 10 is not prime |
+| SumPrimes(10) | sum_primes(10) | 17 | 2+3+5+7 |
+| PrimeFactors(10) | prime_factors(10) | [2, 5] | Prime factorization |
+| Vector operations | Various | Random | Values vary due to randomization |
+| Sort operations | Various | Random | Values vary due to randomization |
 
 ## Configuration Files
 
@@ -436,7 +436,7 @@ The installation testing ensures the Python implementation is:
 - **Installable**: Can be installed via pip in a clean environment
 - **Importable**: All modules resolve correctly
 - **Executable**: CLI entry point runs without errors
-- **Functional**: Output matches expected behavior from Java version
+- **Functional**: Output matches expected behavior
 - **Maintainable**: Comprehensive validation catches regressions
 
 Both automated scripts (`test_installation.sh` and `validate_cli_output.py`) provide thorough validation with detailed reporting to ensure the package meets all installation and execution requirements.
